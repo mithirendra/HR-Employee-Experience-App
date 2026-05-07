@@ -13,7 +13,7 @@ from utils.helpers import (
     filter_pulse_by_role,
     engagement_color, format_delta,
     is_logged_in, get_role, get_emp_id, get_manager_name,
-    apply_vibe_style,
+    apply_vibe_style, show_footer,
 )
 
 # ── Guard ─────────────────────────────────────────────────────────────────────
@@ -545,3 +545,5 @@ elif role == "HR":
                 </div>
             </div>
             """, unsafe_allow_html=True)
+
+show_footer()

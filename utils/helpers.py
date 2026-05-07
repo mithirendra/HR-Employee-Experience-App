@@ -197,3 +197,15 @@ def apply_vibe_style():
         }
     </style>
     """, unsafe_allow_html=True)
+
+def show_footer():
+    """Render Vibe footer with copyright."""
+    st.markdown("""
+    <div style='text-align:center; padding:20px 0 10px;
+                font-size:11px; color:#c0a080;
+                border-top:0.5px solid #f0d0b8;
+                margin-top:40px;'>
+        © 2026 Mitma Consulting · Vibe Employee Experience Platform Version 0·
+        Built by Mithirendra Maniam
+    </div>
+    """, unsafe_allow_html=True)

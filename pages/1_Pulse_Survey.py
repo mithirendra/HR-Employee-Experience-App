@@ -12,7 +12,8 @@ from utils.helpers import (
     load_employees, load_pulse,
     filter_pulse_by_role,
     engagement_color, format_delta,
-    is_logged_in, get_role, get_emp_id, get_manager_name, apply_vibe_style
+    is_logged_in, get_role, get_emp_id, get_manager_name, apply_vibe_style,
+    show_footer
 )
 
 # ── Guard — redirect to login if not logged in ────────────────────────────────
@@ -470,3 +471,5 @@ elif role == "HR":
                     "{fb}"
                 </div>
                 """, unsafe_allow_html=True)
+
+show_footer()
