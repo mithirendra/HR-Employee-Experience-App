@@ -1,0 +1,501 @@
+employee_id,name,department,job_title,manager,manager_low_care,employment_type,tenure_years,join_date,status,company
+1000,Michelle Menon,Retail,Floor Supervisor,Nelson Ooi,True,Full-time,3.6,2021-06-02,Active,MM Group
+1001,Pamela Abdullah,Retail,Retail Associate,Nelson Ooi,True,Full-time,2.6,2022-06-02,Active,MM Group
+1002,Cheryl Bakar,Retail,Cashier Supervisor,Nelson Ooi,True,Part-time,4.3,2020-09-20,Active,MM Group
+1003,Zara Ali,Retail,Retail Associate,Nelson Ooi,True,Part-time,3.7,2021-04-27,Active,MM Group
+1004,Shirley Chan,Retail,Assistant Store Manager,Nelson Ooi,True,Full-time,11.5,2013-07-11,Active,MM Group
+1005,Nelson Yap,Retail,Cashier Supervisor,Nelson Ooi,True,Part-time,12.0,2013-01-09,Active,MM Group
+1006,Wei Rahman,Retail,Floor Supervisor,Nelson Ooi,True,Part-time,6.0,2019-01-08,Active,MM Group
+1007,Ravi Tan,Retail,Assistant Store Manager,Nelson Ooi,True,Contract,10.4,2014-08-16,Active,MM Group
+1008,Prakash Patel,Retail,Customer Experience Lead,Nelson Ooi,True,Full-time,11.6,2013-06-04,Active,MM Group
+1009,Daniel Yusof,Retail,Store Manager,Nelson Ooi,True,Full-time,2.8,2022-03-22,Active,MM Group
+1010,Azlan Chua,Retail,Assistant Store Manager,Nelson Ooi,True,Contract,7.9,2017-02-14,Active,MM Group
+1011,Fatimah Rashid,Retail,Retail Associate,Nelson Ooi,True,Full-time,9.3,2015-09-22,Active,MM Group
+1012,Ganesh Yap,Retail,Retail Executive,Nelson Ooi,True,Full-time,8.3,2016-09-21,Active,MM Group
+1013,Hafiz Menon,Retail,Assistant Store Manager,Nelson Ooi,True,Full-time,7.6,2017-06-03,Active,MM Group
+1014,Sarah Lee,Retail,Assistant Store Manager,Nadia Kumar,False,Full-time,4.0,2021-01-07,Active,MM Group
+1015,Ridzwan Malik,Retail,Retail Executive,Nadia Kumar,False,Full-time,12.3,2012-09-22,Active,MM Group
+1016,Farid Ibrahim,Retail,Retail Associate,Nadia Kumar,False,Full-time,14.2,2010-10-29,Active,MM Group
+1017,Wendy Yusof,Retail,Retail Executive,Nadia Kumar,False,Full-time,14.5,2010-07-12,Active,MM Group
+1018,Michelle Nair,Retail,Customer Experience Lead,Nadia Kumar,False,Full-time,6.3,2018-09-21,Active,MM Group
+1019,Wendy Hamid,Retail,Visual Merchandiser,Nadia Kumar,False,Full-time,2.3,2022-09-20,Active,MM Group
+1020,Lily Lim,Retail,Visual Merchandiser,Nadia Kumar,False,Part-time,9.0,2016-01-09,Active,MM Group
+1021,Jason Tan,Retail,Store Manager,Nadia Kumar,False,Full-time,1.5,2023-07-09,Active,MM Group
+1022,Wei Wong,Retail,Assistant Store Manager,Nadia Kumar,False,Part-time,13.0,2012-01-10,Active,MM Group
+1023,Nadia Malik,Retail,Retail Associate,Cheryl Chong,False,Part-time,3.6,2021-06-02,Active,MM Group
+1024,Terry Ibrahim,Retail,Floor Supervisor,Cheryl Chong,False,Full-time,4.0,2021-01-07,Active,MM Group
+1025,Mohamed Chong,Retail,Cashier Supervisor,Cheryl Chong,False,Full-time,1.9,2023-02-13,Active,MM Group
+1026,Amelia Ismail,Retail,Store Manager,Cheryl Chong,False,Contract,7.3,2017-09-21,Active,MM Group
+1027,Pamela Chong,Retail,Customer Experience Lead,Cheryl Chong,False,Full-time,1.4,2023-08-15,Active,MM Group
+1028,Sarah Ong,Retail,Floor Supervisor,Cheryl Chong,False,Full-time,3.3,2021-09-20,Active,MM Group
+1029,Amelia Chua,Retail,Visual Merchandiser,Cheryl Chong,False,Full-time,4.5,2020-07-09,Active,MM Group
+1030,Ivan Chong,Retail,Retail Executive,Cheryl Chong,False,Full-time,1.2,2023-10-26,Active,MM Group
+1031,Ganesh Kumar,Retail,Floor Supervisor,Prakash Chan,False,Full-time,2.9,2022-02-13,Active,MM Group
+1032,Kavya Aziz,Retail,Retail Associate,Prakash Chan,False,Full-time,13.6,2011-06-05,Active,MM Group
+1033,Ahmad Rahman,Retail,Floor Supervisor,Prakash Chan,False,Full-time,4.3,2020-09-20,Active,MM Group
+1034,Amelia Malik,Retail,Inventory Specialist,Prakash Chan,False,Full-time,2.7,2022-04-27,Active,MM Group
+1035,Siti Bakar,Retail,Customer Experience Lead,Prakash Chan,False,Full-time,1.4,2023-08-15,Active,MM Group
+1036,Siti Ibrahim,Retail,Retail Executive,Prakash Chan,False,Full-time,7.8,2017-03-22,Active,MM Group
+1037,Azlan Chan,Retail,Assistant Store Manager,Rajesh Lim,False,Part-time,12.8,2012-03-23,Active,MM Group
+1038,Wei Kumar,Retail,Visual Merchandiser,Rajesh Lim,False,Part-time,6.4,2018-08-15,Active,MM Group
+1039,Hafiz Wong,Retail,Cashier Supervisor,Rajesh Lim,False,Contract,9.5,2015-07-11,Active,MM Group
+1040,Elaine Karim,Retail,Inventory Specialist,Rajesh Lim,False,Full-time,5.1,2019-12-03,Active,MM Group
+1041,Yazid Menon,Retail,Cashier Supervisor,Rajesh Lim,False,Full-time,4.0,2021-01-07,Active,MM Group
+1042,Pamela Nair,Retail,Assistant Store Manager,Jason Rashid,False,Full-time,7.1,2017-12-03,Active,MM Group
+1043,Natasha Chong,Retail,Visual Merchandiser,Jason Rashid,False,Part-time,1.6,2023-06-02,Active,MM Group
+1044,Ravi Goh,Retail,Assistant Store Manager,Jason Rashid,False,Full-time,14.0,2011-01-10,Active,MM Group
+1045,Rina Singh,Retail,Retail Executive,Jason Rashid,False,Full-time,2.8,2022-03-22,Active,MM Group
+1046,Grace Karim,Retail,Retail Executive,Jason Rashid,False,Full-time,0.6,2024-06-01,Active,MM Group
+1047,Yazid Chong,Retail,Retail Associate,Jason Rashid,False,Full-time,14.1,2010-12-05,Active,MM Group
+1048,Priya Chong,Retail,Retail Associate,Jason Rashid,False,Full-time,11.3,2013-09-22,Active,MM Group
+1049,Daniel Koh,Retail,Visual Merchandiser,Jason Rashid,False,Contract,10.9,2014-02-15,Active,MM Group
+1050,Nelson Raj,Retail,Inventory Specialist,Jason Rashid,False,Full-time,7.8,2017-03-22,Active,MM Group
+1051,Mei Yusof,Retail,Store Manager,Jason Rashid,False,Full-time,12.5,2012-07-11,Active,MM Group
+1052,Lily Goh,Retail,Inventory Specialist,Jason Rashid,False,Full-time,9.7,2015-04-29,Active,MM Group
+1053,Cheryl Hamid,Retail,Cashier Supervisor,Jason Rashid,False,Part-time,8.5,2016-07-10,Active,MM Group
+1054,Ahmad Ooi,Retail,Retail Associate,Jason Rashid,False,Part-time,1.6,2023-06-02,Active,MM Group
+1055,Rajesh Ali,Retail,Retail Associate,Jason Rashid,False,Full-time,8.9,2016-02-15,Active,MM Group
+1056,Farid Wong,Retail,Store Manager,Jason Rashid,False,Full-time,5.0,2020-01-08,Active,MM Group
+1057,Joanne Kumar,Retail,Customer Experience Lead,Diana Ong,False,Part-time,10.2,2014-10-29,Active,MM Group
+1058,Suresh Teh,Retail,Visual Merchandiser,Diana Ong,False,Full-time,13.9,2011-02-16,Active,MM Group
+1059,Linda Ismail,Retail,Customer Experience Lead,Diana Ong,False,Full-time,0.9,2024-02-13,Active,MM Group
+1060,Yazid Kumar,Retail,Assistant Store Manager,Diana Ong,False,Full-time,4.4,2020-08-14,Active,MM Group
+1061,Rajesh Ibrahim,Retail,Floor Supervisor,Diana Ong,False,Full-time,3.7,2021-04-27,Active,MM Group
+1062,Fatimah Soh,Retail,Visual Merchandiser,Diana Ong,False,Full-time,3.7,2021-04-27,Active,MM Group
+1063,Lily Patel,Retail,Inventory Specialist,Diana Ong,False,Full-time,13.0,2012-01-10,Active,MM Group
+1064,Pamela Rashid,Retail,Retail Executive,Diana Ong,False,Full-time,6.3,2018-09-21,Active,MM Group
+1065,Priya Raj,Retail,Inventory Specialist,Shankar Bakar,False,Full-time,3.1,2021-12-02,Active,MM Group
+1066,Harish Yusof,Retail,Customer Experience Lead,Shankar Bakar,False,Full-time,5.5,2019-07-10,Active,MM Group
+1067,Hafiz Rashid,Retail,Visual Merchandiser,Shankar Bakar,False,Full-time,2.2,2022-10-26,Active,MM Group
+1068,Rajesh Yusof,Retail,Retail Executive,Shankar Bakar,False,Contract,0.5,2024-07-08,Active,MM Group
+1069,Ridzwan Ong,Retail,Assistant Store Manager,Shankar Bakar,False,Contract,5.8,2019-03-22,Active,MM Group
+1070,Grace Menon,Retail,Assistant Store Manager,Ivan Patel,False,Full-time,10.1,2014-12-04,Active,MM Group
+1071,Azlan Nair,Retail,Customer Experience Lead,Ivan Patel,False,Full-time,10.2,2014-10-29,Active,MM Group
+1072,Shankar Singh,Retail,Visual Merchandiser,Ivan Patel,False,Full-time,8.5,2016-07-10,Active,MM Group
+1073,Yazid Rahman,Retail,Retail Associate,Ivan Patel,False,Part-time,10.3,2014-09-22,Active,MM Group
+1074,Terry Nair,Retail,Store Manager,Ivan Patel,False,Full-time,6.4,2018-08-15,Active,MM Group
+1075,Daniel Koh,Retail,Customer Experience Lead,Ivan Patel,False,Full-time,6.7,2018-04-28,Active,MM Group
+1076,Ivan Hamid,Retail,Retail Executive,Ivan Patel,False,Full-time,10.3,2014-09-22,Active,MM Group
+1077,Cheryl Yap,Retail,Inventory Specialist,Ivan Patel,False,Part-time,10.1,2014-12-04,Active,MM Group
+1078,Yazid Pillai,Retail,Visual Merchandiser,Ivan Patel,False,Contract,1.9,2023-02-13,Active,MM Group
+1079,Fatimah Soh,Retail,Retail Associate,Ivan Patel,False,Full-time,12.2,2012-10-28,Active,MM Group
+1080,Sarah Ibrahim,Retail,Assistant Store Manager,Ahmad Yap,False,Full-time,9.4,2015-08-16,Active,MM Group
+1081,Suresh Ong,Retail,Cashier Supervisor,Ahmad Yap,False,Full-time,10.9,2014-02-15,Active,MM Group
+1082,Zara Kumar,Retail,Store Manager,Ahmad Yap,False,Full-time,2.6,2022-06-02,Active,MM Group
+1083,Vivian Yusof,Retail,Retail Executive,Ahmad Yap,False,Full-time,3.7,2021-04-27,Active,MM Group
+1084,Siti Kumar,Retail,Assistant Store Manager,Ahmad Yap,False,Full-time,13.8,2011-03-24,Active,MM Group
+1085,Natasha Karim,Retail,Customer Experience Lead,Lily Patel,False,Full-time,14.8,2010-03-24,Active,MM Group
+1086,Grace Rashid,Retail,Retail Executive,Lily Patel,False,Full-time,6.7,2018-04-28,Active,MM Group
+1087,Kevin Ibrahim,Retail,Visual Merchandiser,Lily Patel,False,Contract,7.0,2018-01-08,Active,MM Group
+1088,Nadia Karim,Retail,Visual Merchandiser,Lily Patel,False,Full-time,7.5,2017-07-10,Active,MM Group
+1089,Ivan Ng,Retail,Visual Merchandiser,Lily Patel,False,Full-time,10.8,2014-03-23,Active,MM Group
+1090,Lily Menon,Retail,Assistant Store Manager,Lily Patel,False,Full-time,13.4,2011-08-17,Active,MM Group
+1091,Aisha Soh,Retail,Retail Associate,Lily Patel,False,Full-time,6.1,2018-12-03,Active,MM Group
+1092,Suresh Ismail,Retail,Floor Supervisor,Ganesh Pillai,False,Full-time,5.3,2019-09-21,Active,MM Group
+1093,Siti Koh,Retail,Cashier Supervisor,Ganesh Pillai,False,Part-time,12.6,2012-06-04,Active,MM Group
+1094,Shankar Lim,Retail,Cashier Supervisor,Ganesh Pillai,False,Full-time,12.9,2012-02-16,Active,MM Group
+1095,Ahmad Hassan,Retail,Cashier Supervisor,Ganesh Pillai,False,Full-time,4.8,2020-03-21,Active,MM Group
+1096,Prakash Bakar,Retail,Visual Merchandiser,Ganesh Pillai,False,Full-time,12.1,2012-12-04,Active,MM Group
+1097,Jason Patel,Retail,Store Manager,Ganesh Pillai,False,Full-time,6.8,2018-03-22,Active,MM Group
+1098,Yazid Aziz,Retail,Floor Supervisor,Christopher Chong,False,Full-time,11.0,2014-01-09,Active,MM Group
+1099,Grace Bakar,Retail,Cashier Supervisor,Christopher Chong,False,Part-time,0.9,2024-02-13,Active,MM Group
+1100,Terry Lim,Retail,Cashier Supervisor,Christopher Chong,False,Full-time,1.7,2023-04-27,Active,MM Group
+1101,Natasha Chua,Retail,Cashier Supervisor,Christopher Chong,False,Full-time,1.2,2023-10-26,Active,MM Group
+1102,Kavya Abdullah,Retail,Cashier Supervisor,Christopher Chong,False,Full-time,5.2,2019-10-27,Active,MM Group
+1103,Ganesh Ismail,Retail,Assistant Store Manager,Christopher Chong,False,Full-time,4.2,2020-10-26,Active,MM Group
+1104,Nurul Bakar,Retail,Customer Experience Lead,Christopher Chong,False,Full-time,1.3,2023-09-20,Active,MM Group
+1105,Pamela Ng,Retail,Store Manager,Christopher Chong,False,Full-time,11.8,2013-03-23,Active,MM Group
+1106,Sarah Ong,Retail,Retail Associate,Christopher Chong,False,Full-time,12.7,2012-04-29,Active,MM Group
+1107,Farid Ibrahim,Retail,Visual Merchandiser,Christopher Chong,False,Full-time,10.2,2014-10-29,Active,MM Group
+1108,Vivian Ali,Retail,Assistant Store Manager,Hassan Raj,False,Full-time,2.9,2022-02-13,Active,MM Group
+1109,Fatimah Chong,Retail,Inventory Specialist,Hassan Raj,False,Part-time,8.9,2016-02-15,Active,MM Group
+1110,Joanne Rahman,Retail,Visual Merchandiser,Hassan Raj,False,Full-time,6.3,2018-09-21,Active,MM Group
+1111,Elaine Kumar,Retail,Inventory Specialist,Hassan Raj,False,Contract,2.0,2023-01-07,Active,MM Group
+1112,Hafiz Ooi,Retail,Store Manager,Hassan Raj,False,Full-time,12.0,2013-01-09,Active,MM Group
+1113,Prakash Yusof,Retail,Assistant Store Manager,Hassan Raj,False,Part-time,10.1,2014-12-04,Active,MM Group
+1114,Pamela Pillai,Retail,Cashier Supervisor,Hassan Raj,False,Full-time,0.7,2024-04-26,Active,MM Group
+1115,Harish Yusof,Retail,Floor Supervisor,Hassan Raj,False,Full-time,14.4,2010-08-17,Active,MM Group
+1116,Amelia Chua,Retail,Inventory Specialist,Hassan Raj,False,Part-time,11.1,2013-12-04,Active,MM Group
+1117,Vivian Ibrahim,Retail,Inventory Specialist,Ridzwan Abdullah,False,Full-time,7.2,2017-10-27,Active,MM Group
+1118,Sarah Chan,Retail,Floor Supervisor,Ridzwan Abdullah,False,Full-time,4.5,2020-07-09,Active,MM Group
+1119,Ganesh Abdullah,Retail,Cashier Supervisor,Ridzwan Abdullah,False,Full-time,8.8,2016-03-22,Active,MM Group
+1120,Terry Singh,Technology,UX Designer,Nurul Malik,False,Full-time,7.3,2017-09-21,Active,MM Group
+1121,Linda Lee,Technology,UX Designer,Nurul Malik,False,Full-time,4.2,2020-10-26,Active,MM Group
+1122,Wei Aziz,Technology,Cybersecurity Analyst,Nurul Malik,False,Contract,7.6,2017-06-03,Active,MM Group
+1123,Joanne Lee,Technology,Cybersecurity Analyst,Nurul Malik,False,Full-time,2.7,2022-04-27,Active,MM Group
+1124,Mei Kumar,Technology,Product Manager,Nurul Malik,False,Part-time,2.2,2022-10-26,Active,MM Group
+1125,Grace Soh,Technology,Product Manager,Linda Malik,False,Full-time,11.7,2013-04-29,Active,MM Group
+1126,Ivan Nair,Technology,Product Manager,Linda Malik,False,Full-time,13.0,2012-01-10,Active,MM Group
+1127,Terry Lee,Technology,Senior Engineer,Linda Malik,False,Full-time,9.3,2015-09-22,Active,MM Group
+1128,Nelson Koh,Technology,Senior Engineer,Linda Malik,False,Full-time,4.3,2020-09-20,Active,MM Group
+1129,Sarah Chua,Technology,Tech Lead,Linda Malik,False,Full-time,8.5,2016-07-10,Active,MM Group
+1130,Suresh Hamid,Technology,UX Designer,Linda Malik,False,Full-time,10.5,2014-07-11,Active,MM Group
+1131,Rajesh Soh,Technology,QA Engineer,Linda Malik,False,Full-time,4.7,2020-04-27,Active,MM Group
+1132,Wei Soh,Technology,Mobile Developer,Linda Malik,False,Part-time,13.9,2011-02-16,Active,MM Group
+1133,Yazid Ong,Technology,Cloud Architect,Linda Malik,False,Full-time,6.7,2018-04-28,Active,MM Group
+1134,Pamela Teh,Technology,Tech Lead,Linda Malik,False,Full-time,13.7,2011-04-30,Active,MM Group
+1135,Siti Yap,Technology,Cybersecurity Analyst,Linda Malik,False,Part-time,12.0,2013-01-09,Active,MM Group
+1136,Daniel Hamid,Technology,QA Engineer,Linda Malik,False,Full-time,2.3,2022-09-20,Active,MM Group
+1137,Nadia Rashid,Technology,UX Designer,Linda Malik,False,Full-time,8.3,2016-09-21,Active,MM Group
+1138,Hafiz Wong,Technology,Data Analyst,Linda Malik,False,Part-time,13.4,2011-08-17,Active,MM Group
+1139,Nurul Chan,Technology,Mobile Developer,Ravi Pillai,False,Part-time,3.8,2021-03-21,Active,MM Group
+1140,Elaine Lim,Technology,Mobile Developer,Ravi Pillai,False,Full-time,15.0,2010-01-10,Active,MM Group
+1141,Terry Wong,Technology,Tech Lead,Ravi Pillai,False,Full-time,11.6,2013-06-04,Active,MM Group
+1142,Wendy Hamid,Technology,Tech Lead,Ravi Pillai,False,Part-time,13.8,2011-03-24,Active,MM Group
+1143,Amelia Malik,Technology,UX Designer,Ravi Pillai,False,Full-time,14.6,2010-06-05,Active,MM Group
+1144,Suresh Pillai,Technology,Senior Engineer,Ravi Pillai,False,Full-time,5.2,2019-10-27,Active,MM Group
+1145,Lily Ismail,Technology,QA Engineer,Ravi Pillai,False,Contract,10.6,2014-06-04,Active,MM Group
+1146,Zara Wong,Technology,Data Analyst,Ravi Pillai,False,Full-time,7.1,2017-12-03,Active,MM Group
+1147,James Ooi,Technology,Product Manager,Ravi Pillai,False,Part-time,14.6,2010-06-05,Active,MM Group
+1148,Yazid Bakar,Technology,Software Engineer,Hafiz Patel,False,Full-time,7.2,2017-10-27,Active,MM Group
+1149,Wendy Ali,Technology,UX Designer,Hafiz Patel,False,Contract,9.5,2015-07-11,Active,MM Group
+1150,Ivan Lee,Technology,Cloud Architect,Hafiz Patel,False,Full-time,3.5,2021-07-09,Active,MM Group
+1151,Daniel Hamid,Technology,UX Designer,Hafiz Patel,False,Full-time,13.3,2011-09-23,Active,MM Group
+1152,Nurul Kumar,Technology,QA Engineer,Hafiz Patel,False,Part-time,10.8,2014-03-23,Active,MM Group
+1153,Diana Ismail,Technology,Senior Engineer,Wendy Ong,False,Full-time,1.9,2023-02-13,Active,MM Group
+1154,Priya Teh,Technology,QA Engineer,Wendy Ong,False,Part-time,7.7,2017-04-28,Active,MM Group
+1155,Michelle Patel,Technology,UX Designer,Wendy Ong,False,Full-time,6.5,2018-07-10,Active,MM Group
+1156,Sarah Abdullah,Technology,Product Manager,Wendy Ong,False,Full-time,8.5,2016-07-10,Active,MM Group
+1157,Hafiz Rashid,Technology,Tech Lead,Wendy Ong,False,Full-time,11.3,2013-09-22,Active,MM Group
+1158,Vivian Ismail,Technology,Cloud Architect,Ridzwan Ismail,False,Full-time,5.4,2019-08-15,Active,MM Group
+1159,Ahmad Singh,Technology,Cybersecurity Analyst,Ridzwan Ismail,False,Part-time,11.0,2014-01-09,Active,MM Group
+1160,Yazid Malik,Technology,UX Designer,Ridzwan Ismail,False,Part-time,13.0,2012-01-10,Active,MM Group
+1161,Eugene Hassan,Technology,Cloud Architect,Ridzwan Ismail,False,Full-time,5.3,2019-09-21,Active,MM Group
+1162,Natasha Menon,Technology,DevOps Engineer,Ridzwan Ismail,False,Part-time,13.1,2011-12-05,Active,MM Group
+1163,Christopher Soh,Technology,Product Manager,Ridzwan Ismail,False,Full-time,12.9,2012-02-16,Active,MM Group
+1164,James Ibrahim,Technology,Product Manager,Ridzwan Ismail,False,Full-time,10.7,2014-04-29,Active,MM Group
+1165,Yazid Teh,Technology,Software Engineer,Ridzwan Ismail,False,Full-time,7.7,2017-04-28,Active,MM Group
+1166,Azlan Pillai,Technology,UX Designer,Ridzwan Ismail,False,Full-time,13.1,2011-12-05,Active,MM Group
+1167,Natasha Tan,Technology,Product Manager,Ganesh Kumar,False,Contract,11.0,2014-01-09,Active,MM Group
+1168,Aisha Ng,Technology,QA Engineer,Ganesh Kumar,False,Full-time,7.3,2017-09-21,Active,MM Group
+1169,Grace Aziz,Technology,Data Analyst,Ganesh Kumar,False,Contract,9.9,2015-02-15,Active,MM Group
+1170,Prakash Rahman,Technology,Mobile Developer,Ganesh Kumar,False,Full-time,14.3,2010-09-23,Active,MM Group
+1171,Prakash Wong,Technology,DevOps Engineer,Ganesh Kumar,False,Contract,9.5,2015-07-11,Active,MM Group
+1172,Joanne Singh,Technology,Senior Engineer,Ganesh Kumar,False,Full-time,15.0,2010-01-10,Active,MM Group
+1173,Harish Chong,Technology,QA Engineer,Ganesh Kumar,False,Full-time,6.9,2018-02-14,Active,MM Group
+1174,Rajesh Menon,Technology,QA Engineer,Ganesh Kumar,False,Full-time,12.0,2013-01-09,Active,MM Group
+1175,Rina Yusof,Technology,Cloud Architect,Ganesh Kumar,False,Full-time,2.6,2022-06-02,Active,MM Group
+1176,Terry Chua,Technology,Senior Engineer,Ganesh Kumar,False,Part-time,3.0,2022-01-07,Active,MM Group
+1177,Christopher Kumar,Technology,Cybersecurity Analyst,Ganesh Kumar,False,Full-time,7.7,2017-04-28,Active,MM Group
+1178,Jason Abdullah,Technology,UX Designer,Ganesh Kumar,False,Full-time,9.7,2015-04-29,Active,MM Group
+1179,Yazid Tan,Technology,UX Designer,Ganesh Kumar,False,Full-time,13.5,2011-07-12,Active,MM Group
+1180,Prakash Yap,Technology,Data Analyst,Pamela Malik,False,Part-time,1.6,2023-06-02,Active,MM Group
+1181,Fatimah Yusof,Technology,UX Designer,Pamela Malik,False,Full-time,10.5,2014-07-11,Active,MM Group
+1182,Mohamed Rahman,Technology,Senior Engineer,Pamela Malik,False,Full-time,12.9,2012-02-16,Active,MM Group
+1183,Christopher Hassan,Technology,QA Engineer,Pamela Malik,False,Full-time,8.8,2016-03-22,Active,MM Group
+1184,Yazid Aziz,Technology,Cybersecurity Analyst,Pamela Malik,False,Contract,4.5,2020-07-09,Active,MM Group
+1185,Vivian Lee,Technology,UX Designer,Pamela Malik,False,Full-time,13.7,2011-04-30,Active,MM Group
+1186,Vivian Soh,Technology,Data Analyst,Pamela Malik,False,Full-time,9.3,2015-09-22,Active,MM Group
+1187,Nelson Ong,Technology,Mobile Developer,Pamela Malik,False,Contract,9.5,2015-07-11,Active,MM Group
+1188,Joanne Goh,Technology,Mobile Developer,Pamela Malik,False,Contract,9.6,2015-06-04,Active,MM Group
+1189,Rajesh Nair,Technology,Software Engineer,Pamela Malik,False,Part-time,11.9,2013-02-15,Active,MM Group
+1190,Rina Goh,Technology,QA Engineer,Pamela Malik,False,Full-time,1.8,2023-03-21,Active,MM Group
+1191,Cheryl Ismail,Technology,Tech Lead,Pamela Malik,False,Part-time,3.0,2022-01-07,Active,MM Group
+1192,Rina Karim,Technology,QA Engineer,Pamela Malik,False,Full-time,7.8,2017-03-22,Active,MM Group
+1193,Ravi Ibrahim,Technology,QA Engineer,Pamela Malik,False,Full-time,14.5,2010-07-12,Active,MM Group
+1194,Priya Abdullah,Technology,Tech Lead,Pamela Malik,False,Full-time,14.5,2010-07-12,Active,MM Group
+1195,Ridzwan Aziz,Technology,Cloud Architect,Nurul Chan,False,Full-time,14.5,2010-07-12,Active,MM Group
+1196,Mei Aziz,Technology,Cloud Architect,Nurul Chan,False,Full-time,0.7,2024-04-26,Active,MM Group
+1197,Natasha Ali,Technology,Mobile Developer,Nurul Chan,False,Full-time,10.3,2014-09-22,Active,MM Group
+1198,Elaine Rahman,Technology,Data Analyst,Nurul Chan,False,Full-time,12.4,2012-08-16,Active,MM Group
+1199,Joanne Soh,Technology,Cybersecurity Analyst,Nurul Chan,False,Part-time,7.3,2017-09-21,Active,MM Group
+1200,James Soh,Technology,Mobile Developer,Nurul Chan,False,Full-time,9.9,2015-02-15,Active,MM Group
+1201,Shankar Nair,Technology,Senior Engineer,Nurul Chan,False,Full-time,9.9,2015-02-15,Active,MM Group
+1202,Rajesh Wong,Technology,UX Designer,Nurul Chan,False,Full-time,4.9,2020-02-14,Active,MM Group
+1203,Harish Kumar,Technology,Tech Lead,Nurul Chan,False,Full-time,13.4,2011-08-17,Active,MM Group
+1204,Natasha Ali,Technology,Cloud Architect,Nurul Chan,False,Full-time,10.2,2014-10-29,Active,MM Group
+1205,Elaine Teh,Technology,Mobile Developer,Nurul Chan,False,Full-time,13.3,2011-09-23,Active,MM Group
+1206,Shirley Ismail,Technology,QA Engineer,Nurul Chan,False,Full-time,14.1,2010-12-05,Active,MM Group
+1207,Shankar Ali,Technology,UX Designer,Nurul Chan,False,Full-time,3.7,2021-04-27,Active,MM Group
+1208,Rina Chong,Technology,Data Analyst,Nurul Chan,False,Part-time,14.7,2010-04-30,Active,MM Group
+1209,Pamela Hassan,Technology,QA Engineer,Nurul Chan,False,Full-time,1.4,2023-08-15,Active,MM Group
+1210,Natasha Chan,Technology,Mobile Developer,Zara Kumar,False,Contract,10.1,2014-12-04,Active,MM Group
+1211,Hafiz Lim,Technology,Data Analyst,Zara Kumar,False,Full-time,1.2,2023-10-26,Active,MM Group
+1212,Farid Koh,Technology,Cloud Architect,Zara Kumar,False,Full-time,1.5,2023-07-09,Active,MM Group
+1213,Elaine Koh,Technology,DevOps Engineer,Zara Kumar,False,Full-time,12.3,2012-09-22,Active,MM Group
+1214,Vivian Teh,Technology,Cybersecurity Analyst,Zara Kumar,False,Full-time,11.9,2013-02-15,Active,MM Group
+1215,Nadia Teh,Technology,Cloud Architect,Zara Kumar,False,Full-time,14.8,2010-03-24,Active,MM Group
+1216,Priya Lim,Technology,Data Analyst,Elaine Ali,False,Full-time,2.4,2022-08-14,Active,MM Group
+1217,Elaine Menon,Technology,QA Engineer,Elaine Ali,False,Full-time,0.7,2024-04-26,Active,MM Group
+1218,Farid Ismail,Technology,Senior Engineer,Elaine Ali,False,Full-time,8.1,2016-12-03,Active,MM Group
+1219,Ivan Ali,Technology,Senior Engineer,Elaine Ali,False,Full-time,7.9,2017-02-14,Active,MM Group
+1220,Hassan Yusof,Sales,Sales Executive,Azlan Soh,False,Full-time,13.1,2011-12-05,Active,MM Group
+1221,Hafiz Nair,Sales,Sales Lead,Azlan Soh,False,Full-time,5.6,2019-06-04,Active,MM Group
+1222,Yazid Ibrahim,Sales,Account Manager,Azlan Soh,False,Full-time,3.8,2021-03-21,Active,MM Group
+1223,Diana Ali,Sales,Key Account Manager,Azlan Soh,False,Part-time,2.2,2022-10-26,Active,MM Group
+1224,Jason Yusof,Sales,Sales Executive,Azlan Soh,False,Part-time,12.8,2012-03-23,Active,MM Group
+1225,Yazid Patel,Sales,Key Account Manager,Azlan Soh,False,Full-time,0.9,2024-02-13,Active,MM Group
+1226,Lily Hassan,Sales,Business Development Manager,Azlan Soh,False,Part-time,0.6,2024-06-01,Active,MM Group
+1227,Yazid Aziz,Sales,Sales Executive,Azlan Soh,False,Full-time,1.5,2023-07-09,Active,MM Group
+1228,Cheryl Karim,Sales,Inside Sales Representative,Azlan Soh,False,Full-time,3.6,2021-06-02,Active,MM Group
+1229,Lily Yap,Sales,Regional Sales Manager,Azlan Soh,False,Part-time,5.9,2019-02-14,Active,MM Group
+1230,Hafiz Chan,Sales,Business Development Manager,Azlan Soh,False,Full-time,13.3,2011-09-23,Active,MM Group
+1231,Siti Chan,Sales,Inside Sales Representative,Rajesh Karim,False,Full-time,4.4,2020-08-14,Active,MM Group
+1232,Hafiz Hamid,Sales,Sales Lead,Rajesh Karim,False,Part-time,6.5,2018-07-10,Active,MM Group
+1233,Priya Hassan,Sales,Key Account Manager,Rajesh Karim,False,Contract,6.7,2018-04-28,Active,MM Group
+1234,Joanne Malik,Sales,Key Account Manager,Rajesh Karim,False,Full-time,8.1,2016-12-03,Active,MM Group
+1235,Jason Aziz,Sales,Sales Executive,Rajesh Karim,False,Full-time,14.8,2010-03-24,Active,MM Group
+1236,Kavya Nair,Sales,Business Development Manager,Rajesh Karim,False,Full-time,14.2,2010-10-29,Active,MM Group
+1237,Daniel Menon,Sales,Sales Operations Analyst,Rajesh Karim,False,Full-time,2.2,2022-10-26,Active,MM Group
+1238,Linda Goh,Sales,Sales Lead,Rajesh Karim,False,Part-time,6.0,2019-01-08,Active,MM Group
+1239,Diana Hassan,Sales,Sales Executive,Rajesh Karim,False,Full-time,1.5,2023-07-09,Active,MM Group
+1240,Nurul Abdullah,Sales,Regional Sales Manager,Rajesh Karim,False,Part-time,13.9,2011-02-16,Active,MM Group
+1241,Amelia Aziz,Sales,Inside Sales Representative,Rajesh Karim,False,Full-time,10.8,2014-03-23,Active,MM Group
+1242,Priya Aziz,Sales,Regional Sales Manager,Rajesh Karim,False,Full-time,0.8,2024-03-20,Active,MM Group
+1243,Grace Abdullah,Sales,Regional Sales Manager,Rajesh Karim,False,Full-time,12.6,2012-06-04,Active,MM Group
+1244,Amelia Chong,Sales,Inside Sales Representative,Rajesh Karim,False,Part-time,4.0,2021-01-07,Active,MM Group
+1245,Zara Nair,Sales,Sales Lead,Pamela Lim,True,Full-time,11.3,2013-09-22,Active,MM Group
+1246,Vivian Yap,Sales,Account Manager,Pamela Lim,True,Part-time,1.6,2023-06-02,Active,MM Group
+1247,Azlan Ong,Sales,Regional Sales Manager,Pamela Lim,True,Full-time,13.6,2011-06-05,Active,MM Group
+1248,Ridzwan Teh,Sales,Business Development Manager,Pamela Lim,True,Full-time,3.9,2021-02-13,Active,MM Group
+1249,Mohamed Chua,Sales,Account Manager,Pamela Lim,True,Full-time,9.2,2015-10-29,Active,MM Group
+1250,Vivian Malik,Sales,Sales Operations Analyst,Pamela Lim,True,Contract,7.2,2017-10-27,Active,MM Group
+1251,Pamela Menon,Sales,Regional Sales Manager,Eugene Aziz,False,Full-time,13.0,2012-01-10,Active,MM Group
+1252,Ivan Ng,Sales,Key Account Manager,Eugene Aziz,False,Full-time,7.3,2017-09-21,Active,MM Group
+1253,Elaine Lee,Sales,Account Manager,Eugene Aziz,False,Full-time,5.6,2019-06-04,Active,MM Group
+1254,Natasha Hamid,Sales,Regional Sales Manager,Eugene Aziz,False,Full-time,1.0,2024-01-07,Active,MM Group
+1255,Wei Chan,Sales,Inside Sales Representative,Eugene Aziz,False,Full-time,9.4,2015-08-16,Active,MM Group
+1256,Elaine Wong,Sales,Sales Lead,Eugene Aziz,False,Full-time,7.0,2018-01-08,Active,MM Group
+1257,Hafiz Ibrahim,Sales,Sales Executive,Eugene Aziz,False,Full-time,7.8,2017-03-22,Active,MM Group
+1258,Harish Pillai,Sales,Account Manager,Eugene Aziz,False,Part-time,14.7,2010-04-30,Active,MM Group
+1259,Pamela Chua,Sales,Sales Operations Analyst,Eugene Aziz,False,Full-time,1.1,2023-12-02,Active,MM Group
+1260,Wendy Karim,Sales,Regional Sales Manager,Eugene Aziz,False,Full-time,9.3,2015-09-22,Active,MM Group
+1261,Daniel Rahman,Sales,Regional Sales Manager,Eugene Aziz,False,Contract,6.4,2018-08-15,Active,MM Group
+1262,Hafiz Lee,Sales,Regional Sales Manager,Eugene Aziz,False,Full-time,11.9,2013-02-15,Active,MM Group
+1263,Lily Chong,Sales,Inside Sales Representative,Eugene Aziz,False,Full-time,8.6,2016-06-03,Active,MM Group
+1264,Ravi Teh,Sales,Business Development Manager,Eugene Aziz,False,Full-time,5.3,2019-09-21,Active,MM Group
+1265,Pamela Aziz,Sales,Account Manager,Harish Malik,False,Full-time,2.4,2022-08-14,Active,MM Group
+1266,Diana Rahman,Sales,Regional Sales Manager,Harish Malik,False,Full-time,9.8,2015-03-23,Active,MM Group
+1267,Yazid Karim,Sales,Inside Sales Representative,Harish Malik,False,Part-time,1.9,2023-02-13,Active,MM Group
+1268,Rina Lim,Sales,Business Development Manager,Harish Malik,False,Full-time,5.8,2019-03-22,Active,MM Group
+1269,Lily Malik,Sales,Business Development Manager,Harish Malik,False,Full-time,3.3,2021-09-20,Active,MM Group
+1270,Wei Singh,Sales,Account Manager,Harish Malik,False,Part-time,12.7,2012-04-29,Active,MM Group
+1271,Vivian Bakar,Sales,Sales Executive,Harish Malik,False,Contract,12.6,2012-06-04,Active,MM Group
+1272,Lily Goh,Sales,Business Development Manager,Harish Malik,False,Full-time,9.2,2015-10-29,Active,MM Group
+1273,Linda Yap,Sales,Sales Executive,Harish Malik,False,Full-time,11.0,2014-01-09,Active,MM Group
+1274,Joanne Kumar,Sales,Key Account Manager,Ivan Ng,False,Full-time,14.6,2010-06-05,Active,MM Group
+1275,Jason Bakar,Sales,Sales Operations Analyst,Ivan Ng,False,Full-time,4.0,2021-01-07,Active,MM Group
+1276,Rina Hamid,Sales,Key Account Manager,Ivan Ng,False,Full-time,7.2,2017-10-27,Active,MM Group
+1277,Azlan Karim,Sales,Business Development Manager,Ivan Ng,False,Full-time,6.6,2018-06-03,Active,MM Group
+1278,Hafiz Goh,Sales,Sales Executive,Ivan Ng,False,Contract,13.2,2011-10-29,Active,MM Group
+1279,Eugene Ali,Sales,Account Manager,Ivan Ng,False,Part-time,8.5,2016-07-10,Active,MM Group
+1280,Priya Singh,Sales,Business Development Manager,Ivan Ng,False,Full-time,1.7,2023-04-27,Active,MM Group
+1281,Ivan Rashid,Sales,Inside Sales Representative,Ivan Ng,False,Full-time,2.6,2022-06-02,Active,MM Group
+1282,Jason Hamid,Sales,Sales Executive,Ivan Ng,False,Full-time,13.3,2011-09-23,Active,MM Group
+1283,Siti Aziz,Sales,Sales Lead,Ivan Ng,False,Full-time,7.8,2017-03-22,Active,MM Group
+1284,Rina Soh,Sales,Account Manager,James Teh,True,Contract,0.9,2024-02-13,Active,MM Group
+1285,Lily Teh,Sales,Key Account Manager,James Teh,True,Full-time,2.5,2022-07-09,Active,MM Group
+1286,Shankar Goh,Sales,Sales Operations Analyst,James Teh,True,Full-time,11.5,2013-07-11,Active,MM Group
+1287,Grace Tan,Sales,Sales Executive,James Teh,True,Full-time,13.6,2011-06-05,Active,MM Group
+1288,Kavya Teh,Sales,Inside Sales Representative,James Teh,True,Full-time,8.5,2016-07-10,Active,MM Group
+1289,Vivian Singh,Sales,Account Manager,James Teh,True,Full-time,3.9,2021-02-13,Active,MM Group
+1290,Suresh Abdullah,Sales,Sales Operations Analyst,Nadia Menon,False,Part-time,1.4,2023-08-15,Active,MM Group
+1291,Prakash Lim,Sales,Sales Lead,Nadia Menon,False,Full-time,9.7,2015-04-29,Active,MM Group
+1292,Daniel Yusof,Sales,Regional Sales Manager,Nadia Menon,False,Full-time,0.5,2024-07-08,Active,MM Group
+1293,Terry Ismail,Sales,Account Manager,Nadia Menon,False,Part-time,3.2,2021-10-26,Active,MM Group
+1294,Rina Ng,Sales,Sales Executive,Nadia Menon,False,Full-time,14.3,2010-09-23,Active,MM Group
+1295,Eugene Wong,Sales,Regional Sales Manager,Nadia Menon,False,Full-time,9.7,2015-04-29,Active,MM Group
+1296,Cheryl Lim,Sales,Account Manager,Nadia Menon,False,Full-time,5.7,2019-04-28,Active,MM Group
+1297,Sarah Chong,Sales,Regional Sales Manager,Nadia Menon,False,Full-time,11.7,2013-04-29,Active,MM Group
+1298,Hassan Bakar,Sales,Business Development Manager,Hafiz Karim,False,Contract,5.4,2019-08-15,Active,MM Group
+1299,Natasha Ibrahim,Sales,Business Development Manager,Hafiz Karim,False,Full-time,9.7,2015-04-29,Active,MM Group
+1300,Grace Yusof,Marketing,Marketing Executive,Michelle Abdullah,True,Full-time,4.5,2020-07-09,Active,MM Group
+1301,Yazid Aziz,Marketing,Brand Manager,Michelle Abdullah,True,Full-time,5.8,2019-03-22,Active,MM Group
+1302,Aisha Hamid,Marketing,Content Strategist,Michelle Abdullah,True,Full-time,1.0,2024-01-07,Active,MM Group
+1303,Vivian Ali,Marketing,Marketing Executive,Michelle Abdullah,True,Part-time,5.8,2019-03-22,Active,MM Group
+1304,Aisha Hamid,Marketing,SEO Specialist,Michelle Abdullah,True,Full-time,14.3,2010-09-23,Active,MM Group
+1305,Ganesh Ng,Marketing,Creative Director,Michelle Abdullah,True,Full-time,8.8,2016-03-22,Active,MM Group
+1306,Zara Menon,Marketing,Digital Marketer,Michelle Abdullah,True,Full-time,9.9,2015-02-15,Active,MM Group
+1307,Nurul Chua,Marketing,Social Media Manager,Michelle Abdullah,True,Part-time,7.7,2017-04-28,Active,MM Group
+1308,Priya Raj,Marketing,Marketing Analyst,Michelle Abdullah,True,Full-time,11.7,2013-04-29,Active,MM Group
+1309,Grace Singh,Marketing,Marketing Analyst,Michelle Abdullah,True,Full-time,10.6,2014-06-04,Active,MM Group
+1310,Farid Ng,Marketing,Marketing Analyst,Mohamed Wong,False,Full-time,7.1,2017-12-03,Active,MM Group
+1311,Joanne Menon,Marketing,Content Strategist,Mohamed Wong,False,Part-time,10.2,2014-10-29,Active,MM Group
+1312,Prakash Singh,Marketing,Brand Manager,Mohamed Wong,False,Contract,13.4,2011-08-17,Active,MM Group
+1313,Linda Ali,Marketing,Content Strategist,Mohamed Wong,False,Full-time,7.9,2017-02-14,Active,MM Group
+1314,Farid Kumar,Marketing,Marketing Executive,Mohamed Wong,False,Full-time,12.0,2013-01-09,Active,MM Group
+1315,Diana Ali,Marketing,Creative Director,Mohamed Wong,False,Full-time,7.3,2017-09-21,Active,MM Group
+1316,Mei Ng,Marketing,Marketing Analyst,Rajesh Menon,False,Part-time,5.0,2020-01-08,Active,MM Group
+1317,Suresh Ismail,Marketing,Content Strategist,Rajesh Menon,False,Full-time,12.4,2012-08-16,Active,MM Group
+1318,James Ng,Marketing,Creative Director,Rajesh Menon,False,Full-time,7.0,2018-01-08,Active,MM Group
+1319,Farid Chua,Marketing,Brand Manager,Rajesh Menon,False,Full-time,11.6,2013-06-04,Active,MM Group
+1320,Azlan Lee,Marketing,Creative Director,Rajesh Menon,False,Full-time,12.6,2012-06-04,Active,MM Group
+1321,Fatimah Yap,Marketing,Digital Marketer,Rajesh Menon,False,Full-time,2.8,2022-03-22,Active,MM Group
+1322,Wendy Singh,Marketing,Campaign Manager,Rajesh Menon,False,Full-time,12.8,2012-03-23,Active,MM Group
+1323,Nelson Patel,Marketing,Campaign Manager,Rajesh Menon,False,Part-time,2.3,2022-09-20,Active,MM Group
+1324,Prakash Chan,Marketing,Brand Manager,Rajesh Menon,False,Part-time,7.8,2017-03-22,Active,MM Group
+1325,Elaine Teh,Marketing,SEO Specialist,Rajesh Menon,False,Part-time,3.0,2022-01-07,Active,MM Group
+1326,Rajesh Lim,Marketing,Campaign Manager,Rajesh Menon,False,Contract,1.7,2023-04-27,Active,MM Group
+1327,Kavya Ismail,Marketing,Marketing Executive,Rajesh Menon,False,Full-time,9.5,2015-07-11,Active,MM Group
+1328,Nelson Bakar,Marketing,Campaign Manager,Rajesh Menon,False,Full-time,4.7,2020-04-27,Active,MM Group
+1329,Sarah Aziz,Marketing,Content Strategist,Rajesh Menon,False,Full-time,4.8,2020-03-21,Active,MM Group
+1330,Ivan Ismail,Marketing,Digital Marketer,Azlan Aziz,False,Full-time,7.5,2017-07-10,Active,MM Group
+1331,Hafiz Teh,Marketing,SEO Specialist,Azlan Aziz,False,Full-time,5.0,2020-01-08,Active,MM Group
+1332,Zara Goh,Marketing,Creative Director,Azlan Aziz,False,Part-time,11.5,2013-07-11,Active,MM Group
+1333,Harish Menon,Marketing,Content Strategist,Azlan Aziz,False,Full-time,4.0,2021-01-07,Active,MM Group
+1334,Ivan Kumar,Marketing,Marketing Executive,Azlan Aziz,False,Full-time,2.5,2022-07-09,Active,MM Group
+1335,Christopher Ismail,Marketing,Brand Manager,Azlan Aziz,False,Full-time,4.1,2020-12-02,Active,MM Group
+1336,Terry Menon,Marketing,Brand Manager,Azlan Aziz,False,Full-time,3.3,2021-09-20,Active,MM Group
+1337,Natasha Malik,Marketing,Marketing Analyst,Prakash Ibrahim,False,Full-time,13.2,2011-10-29,Active,MM Group
+1338,Mei Aziz,Marketing,Digital Marketer,Prakash Ibrahim,False,Full-time,7.8,2017-03-22,Active,MM Group
+1339,Elaine Hassan,Marketing,Campaign Manager,Prakash Ibrahim,False,Full-time,1.2,2023-10-26,Active,MM Group
+1340,Hafiz Ibrahim,Marketing,Marketing Executive,Prakash Ibrahim,False,Full-time,4.6,2020-06-03,Active,MM Group
+1341,Amelia Goh,Marketing,SEO Specialist,Prakash Ibrahim,False,Full-time,13.3,2011-09-23,Active,MM Group
+1342,Rina Wong,Marketing,Creative Director,Prakash Ibrahim,False,Full-time,6.3,2018-09-21,Active,MM Group
+1343,Rina Singh,Marketing,Creative Director,Prakash Ibrahim,False,Full-time,1.6,2023-06-02,Active,MM Group
+1344,Ganesh Patel,Marketing,Content Strategist,Prakash Ibrahim,False,Full-time,12.5,2012-07-11,Active,MM Group
+1345,Harish Aziz,Marketing,SEO Specialist,Prakash Ibrahim,False,Part-time,5.9,2019-02-14,Active,MM Group
+1346,Rina Teh,Marketing,Creative Director,Prakash Ibrahim,False,Full-time,3.4,2021-08-14,Active,MM Group
+1347,Azlan Wong,Marketing,Brand Manager,Prakash Ibrahim,False,Full-time,1.2,2023-10-26,Active,MM Group
+1348,Eugene Karim,Marketing,Creative Director,Prakash Ibrahim,False,Full-time,7.1,2017-12-03,Active,MM Group
+1349,James Menon,Marketing,Campaign Manager,Prakash Ibrahim,False,Part-time,2.9,2022-02-13,Active,MM Group
+1350,Azlan Rashid,Marketing,Campaign Manager,Ganesh Ong,False,Full-time,8.2,2016-10-28,Active,MM Group
+1351,Nurul Ali,Marketing,Content Strategist,Ganesh Ong,False,Full-time,5.3,2019-09-21,Active,MM Group
+1352,Elaine Nair,Marketing,Marketing Executive,Ganesh Ong,False,Part-time,12.1,2012-12-04,Active,MM Group
+1353,Eugene Raj,Marketing,Digital Marketer,Ganesh Ong,False,Full-time,14.5,2010-07-12,Active,MM Group
+1354,Elaine Ibrahim,Marketing,Social Media Manager,Ganesh Ong,False,Full-time,3.0,2022-01-07,Active,MM Group
+1355,Joanne Kumar,Marketing,Content Strategist,Ganesh Ong,False,Full-time,1.0,2024-01-07,Active,MM Group
+1356,Nurul Hamid,Marketing,Brand Manager,Ganesh Ong,False,Full-time,5.0,2020-01-08,Active,MM Group
+1357,Shankar Koh,Marketing,Marketing Analyst,Ganesh Ong,False,Full-time,6.5,2018-07-10,Active,MM Group
+1358,Michelle Goh,Marketing,Creative Director,Ganesh Ong,False,Full-time,8.0,2017-01-08,Active,MM Group
+1359,Yazid Ibrahim,Marketing,SEO Specialist,Ganesh Ong,False,Full-time,8.1,2016-12-03,Active,MM Group
+1360,Prakash Pillai,Marketing,Campaign Manager,Vivian Lee,False,Part-time,8.4,2016-08-15,Active,MM Group
+1361,Eugene Ong,Marketing,Campaign Manager,Vivian Lee,False,Part-time,14.4,2010-08-17,Active,MM Group
+1362,Fatimah Soh,Marketing,Campaign Manager,Vivian Lee,False,Full-time,14.2,2010-10-29,Active,MM Group
+1363,Michelle Koh,Marketing,Marketing Analyst,Vivian Lee,False,Full-time,10.5,2014-07-11,Active,MM Group
+1364,Eugene Hassan,Marketing,Campaign Manager,Vivian Lee,False,Full-time,8.6,2016-06-03,Active,MM Group
+1365,Priya Bakar,Marketing,Social Media Manager,Vivian Lee,False,Full-time,6.0,2019-01-08,Active,MM Group
+1366,Vivian Teh,Marketing,Campaign Manager,Vivian Lee,False,Full-time,4.7,2020-04-27,Active,MM Group
+1367,Hassan Hamid,Marketing,Marketing Analyst,Vivian Lee,False,Full-time,10.0,2015-01-09,Active,MM Group
+1368,Mohamed Bakar,Marketing,Creative Director,Vivian Lee,False,Full-time,4.4,2020-08-14,Active,MM Group
+1369,Farid Chong,Marketing,Digital Marketer,Vivian Lee,False,Full-time,9.4,2015-08-16,Active,MM Group
+1370,Lily Singh,Enterprise,Presales Engineer,Siti Karim,False,Part-time,7.1,2017-12-03,Active,MM Group
+1371,Wendy Malik,Enterprise,Solutions Consultant,Siti Karim,False,Part-time,13.4,2011-08-17,Active,MM Group
+1372,Natasha Patel,Enterprise,Enterprise Account Manager,Siti Karim,False,Full-time,3.3,2021-09-20,Active,MM Group
+1373,Kevin Abdullah,Enterprise,Presales Engineer,Siti Karim,False,Full-time,9.9,2015-02-15,Active,MM Group
+1374,Ahmad Pillai,Enterprise,Client Success Manager,Siti Karim,False,Contract,12.0,2013-01-09,Active,MM Group
+1375,Ganesh Ong,Enterprise,Strategic Accounts Lead,Siti Karim,False,Contract,3.0,2022-01-07,Active,MM Group
+1376,Amelia Rashid,Enterprise,Enterprise Sales Director,Jason Lee,False,Contract,5.3,2019-09-21,Active,MM Group
+1377,Harish Chua,Enterprise,Enterprise Sales Director,Jason Lee,False,Full-time,14.7,2010-04-30,Active,MM Group
+1378,Sarah Tan,Enterprise,Solutions Consultant,Jason Lee,False,Full-time,4.3,2020-09-20,Active,MM Group
+1379,Ganesh Patel,Enterprise,Partnership Manager,Jason Lee,False,Part-time,14.3,2010-09-23,Active,MM Group
+1380,Ridzwan Tan,Enterprise,Partnership Manager,Jason Lee,False,Full-time,4.3,2020-09-20,Active,MM Group
+1381,Siti Ooi,Enterprise,Solutions Consultant,Jason Lee,False,Full-time,7.2,2017-10-27,Active,MM Group
+1382,Joanne Rashid,Enterprise,Presales Engineer,Jason Lee,False,Full-time,13.9,2011-02-16,Active,MM Group
+1383,Shankar Ooi,Enterprise,Partnership Manager,Jason Lee,False,Full-time,9.8,2015-03-23,Active,MM Group
+1384,Grace Soh,Enterprise,Solutions Consultant,Jason Lee,False,Full-time,3.7,2021-04-27,Active,MM Group
+1385,Aisha Abdullah,Enterprise,Client Success Manager,Jason Lee,False,Full-time,11.3,2013-09-22,Active,MM Group
+1386,Suresh Ibrahim,Enterprise,Strategic Accounts Lead,Jason Lee,False,Contract,11.5,2013-07-11,Active,MM Group
+1387,Ganesh Kumar,Enterprise,Client Success Manager,Lily Ibrahim,False,Full-time,10.4,2014-08-16,Active,MM Group
+1388,Wendy Hamid,Enterprise,Partnership Manager,Lily Ibrahim,False,Full-time,8.2,2016-10-28,Active,MM Group
+1389,Terry Ooi,Enterprise,Client Success Manager,Lily Ibrahim,False,Part-time,1.4,2023-08-15,Active,MM Group
+1390,Mohamed Bakar,Enterprise,Partnership Manager,Lily Ibrahim,False,Part-time,2.7,2022-04-27,Active,MM Group
+1391,Ivan Ooi,Enterprise,Presales Engineer,Lily Ibrahim,False,Part-time,10.4,2014-08-16,Active,MM Group
+1392,Shirley Chan,Enterprise,Enterprise Sales Director,Lily Ibrahim,False,Full-time,13.5,2011-07-12,Active,MM Group
+1393,Natasha Goh,Enterprise,Enterprise Sales Director,Lily Ibrahim,False,Part-time,7.9,2017-02-14,Active,MM Group
+1394,Siti Abdullah,Enterprise,Partnership Manager,Lily Ibrahim,False,Full-time,10.3,2014-09-22,Active,MM Group
+1395,Ravi Tan,Enterprise,Client Success Manager,Vivian Goh,True,Full-time,11.3,2013-09-22,Active,MM Group
+1396,Rajesh Yusof,Enterprise,Enterprise Account Manager,Vivian Goh,True,Part-time,5.5,2019-07-10,Active,MM Group
+1397,Siti Ng,Enterprise,Enterprise Sales Director,Vivian Goh,True,Full-time,14.8,2010-03-24,Active,MM Group
+1398,Daniel Ismail,Enterprise,Solutions Consultant,Vivian Goh,True,Contract,3.1,2021-12-02,Active,MM Group
+1399,Ridzwan Ismail,Enterprise,Enterprise Sales Director,Vivian Goh,True,Full-time,5.9,2019-02-14,Active,MM Group
+1400,Christopher Rahman,Enterprise,Presales Engineer,Vivian Goh,True,Part-time,1.7,2023-04-27,Active,MM Group
+1401,Farid Hassan,Enterprise,Client Success Manager,Vivian Goh,True,Full-time,2.2,2022-10-26,Active,MM Group
+1402,Wendy Goh,Enterprise,Solutions Consultant,Vivian Goh,True,Full-time,11.1,2013-12-04,Active,MM Group
+1403,Ganesh Lim,Enterprise,Enterprise Sales Director,Vivian Goh,True,Contract,14.7,2010-04-30,Active,MM Group
+1404,Ridzwan Bakar,Enterprise,Enterprise Sales Director,Vivian Goh,True,Full-time,6.6,2018-06-03,Active,MM Group
+1405,Sarah Abdullah,Enterprise,Partnership Manager,Vivian Goh,True,Full-time,5.5,2019-07-10,Active,MM Group
+1406,Rajesh Ismail,Enterprise,Enterprise Account Manager,Diana Yap,False,Full-time,9.4,2015-08-16,Active,MM Group
+1407,Kavya Ng,Enterprise,Enterprise Account Manager,Diana Yap,False,Full-time,2.0,2023-01-07,Active,MM Group
+1408,Hafiz Lee,Enterprise,Enterprise Account Manager,Diana Yap,False,Full-time,4.0,2021-01-07,Active,MM Group
+1409,Ivan Soh,Enterprise,Strategic Accounts Lead,Diana Yap,False,Full-time,8.3,2016-09-21,Active,MM Group
+1410,Farid Rashid,Enterprise,Solutions Consultant,Diana Yap,False,Part-time,14.9,2010-02-16,Active,MM Group
+1411,James Menon,Enterprise,Solutions Consultant,Diana Yap,False,Contract,3.9,2021-02-13,Active,MM Group
+1412,Jason Ismail,Enterprise,Enterprise Account Manager,Eugene Ibrahim,False,Part-time,4.9,2020-02-14,Active,MM Group
+1413,Elaine Chua,Enterprise,Enterprise Sales Director,Eugene Ibrahim,False,Part-time,9.6,2015-06-04,Active,MM Group
+1414,Shirley Lee,Enterprise,Presales Engineer,Eugene Ibrahim,False,Contract,14.6,2010-06-05,Active,MM Group
+1415,Christopher Karim,Enterprise,Enterprise Sales Director,Eugene Ibrahim,False,Full-time,5.1,2019-12-03,Active,MM Group
+1416,Aisha Nair,Enterprise,Strategic Accounts Lead,Eugene Ibrahim,False,Part-time,6.0,2019-01-08,Active,MM Group
+1417,Eugene Kumar,Enterprise,Partnership Manager,Eugene Ibrahim,False,Full-time,12.8,2012-03-23,Active,MM Group
+1418,Natasha Lee,Enterprise,Enterprise Sales Director,Eugene Ibrahim,False,Part-time,8.7,2016-04-28,Active,MM Group
+1419,Wendy Goh,Enterprise,Partnership Manager,Eugene Ibrahim,False,Full-time,6.1,2018-12-03,Active,MM Group
+1420,Natasha Bakar,Finance,Treasury Analyst,Lily Chan,False,Full-time,9.9,2015-02-15,Active,MM Group
+1421,Rina Rashid,Finance,Management Accountant,Lily Chan,False,Full-time,13.3,2011-09-23,Active,MM Group
+1422,Ridzwan Ibrahim,Finance,Tax Specialist,Lily Chan,False,Full-time,11.5,2013-07-11,Active,MM Group
+1423,Rina Menon,Finance,Finance Executive,Lily Chan,False,Full-time,6.5,2018-07-10,Active,MM Group
+1424,Nurul Raj,Finance,Financial Controller,Lily Chan,False,Full-time,8.5,2016-07-10,Active,MM Group
+1425,Aisha Ong,Finance,Financial Controller,Lily Chan,False,Part-time,5.3,2019-09-21,Active,MM Group
+1426,Sarah Malik,Finance,Tax Specialist,Lily Chan,False,Full-time,8.5,2016-07-10,Active,MM Group
+1427,Ganesh Malik,Finance,Management Accountant,Lily Chan,False,Full-time,14.5,2010-07-12,Active,MM Group
+1428,Kevin Hassan,Finance,Management Accountant,Lily Chan,False,Full-time,3.0,2022-01-07,Active,MM Group
+1429,Prakash Lee,Finance,Senior Accountant,Lily Chan,False,Contract,8.1,2016-12-03,Active,MM Group
+1430,Siti Tan,Finance,Finance Executive,Lily Chan,False,Full-time,6.5,2018-07-10,Active,MM Group
+1431,Ahmad Koh,Finance,Tax Specialist,Rina Chan,False,Full-time,7.8,2017-03-22,Active,MM Group
+1432,Grace Ibrahim,Finance,Finance Analyst,Rina Chan,False,Full-time,10.1,2014-12-04,Active,MM Group
+1433,Prakash Ismail,Finance,Treasury Analyst,Rina Chan,False,Part-time,0.7,2024-04-26,Active,MM Group
+1434,Daniel Lim,Finance,Financial Controller,Rina Chan,False,Full-time,7.8,2017-03-22,Active,MM Group
+1435,Harish Chong,Finance,Finance Executive,Rina Chan,False,Full-time,8.1,2016-12-03,Active,MM Group
+1436,Grace Karim,Finance,Tax Specialist,Rina Chan,False,Full-time,4.2,2020-10-26,Active,MM Group
+1437,Zara Chan,Finance,Financial Controller,Rina Chan,False,Full-time,5.9,2019-02-14,Active,MM Group
+1438,Sarah Soh,Finance,Senior Accountant,Mohamed Lee,False,Contract,4.8,2020-03-21,Active,MM Group
+1439,Pamela Wong,Finance,Financial Controller,Mohamed Lee,False,Full-time,1.9,2023-02-13,Active,MM Group
+1440,Diana Ibrahim,Finance,Finance Analyst,Mohamed Lee,False,Full-time,1.3,2023-09-20,Active,MM Group
+1441,Mei Malik,Finance,Tax Specialist,Mohamed Lee,False,Part-time,12.8,2012-03-23,Active,MM Group
+1442,Harish Karim,Finance,Finance Executive,Mohamed Lee,False,Full-time,13.8,2011-03-24,Active,MM Group
+1443,Shankar Ibrahim,Finance,Senior Accountant,Mohamed Lee,False,Contract,4.4,2020-08-14,Active,MM Group
+1444,Nadia Bakar,Finance,Finance Analyst,Mohamed Lee,False,Full-time,8.7,2016-04-28,Active,MM Group
+1445,James Lim,Finance,FP&A Manager,Mohamed Lee,False,Full-time,14.4,2010-08-17,Active,MM Group
+1446,Wei Nair,Finance,Finance Executive,Mohamed Lee,False,Part-time,2.9,2022-02-13,Active,MM Group
+1447,Christopher Bakar,Finance,FP&A Manager,Mohamed Lee,False,Full-time,5.3,2019-09-21,Active,MM Group
+1448,Azlan Hassan,Finance,Financial Controller,Mohamed Lee,False,Full-time,1.3,2023-09-20,Active,MM Group
+1449,Wei Pillai,Finance,Financial Controller,Mohamed Lee,False,Full-time,9.3,2015-09-22,Active,MM Group
+1450,Rina Chong,HR,L&D Manager,Nurul Patel,False,Full-time,1.8,2023-03-21,Active,MM Group
+1451,Rina Patel,HR,HR Business Partner,Nurul Patel,False,Full-time,2.0,2023-01-07,Active,MM Group
+1452,Amelia Hamid,HR,People Operations Executive,Nurul Patel,False,Full-time,8.6,2016-06-03,Active,MM Group
+1453,Harish Lim,HR,People Operations Executive,Nurul Patel,False,Full-time,1.8,2023-03-21,Active,MM Group
+1454,Hafiz Menon,HR,HR Business Partner,Nurul Patel,False,Full-time,13.0,2012-01-10,Active,MM Group
+1455,Suresh Rahman,HR,HR Director,Nurul Patel,False,Part-time,11.8,2013-03-23,Active,MM Group
+1456,Sarah Karim,HR,Compensation Analyst,Nurul Patel,False,Full-time,3.0,2022-01-07,Active,MM Group
+1457,Farid Patel,HR,Compensation Analyst,Nurul Patel,False,Full-time,4.9,2020-02-14,Active,MM Group
+1458,Wei Yap,HR,Compensation Analyst,Nurul Patel,False,Full-time,6.8,2018-03-22,Active,MM Group
+1459,Eugene Ng,HR,Talent Acquisition Specialist,Nurul Patel,False,Contract,5.7,2019-04-28,Active,MM Group
+1460,Hafiz Ong,HR,Talent Acquisition Specialist,Ivan Malik,False,Full-time,7.1,2017-12-03,Active,MM Group
+1461,Ahmad Aziz,HR,People Operations Executive,Ivan Malik,False,Full-time,5.3,2019-09-21,Active,MM Group
+1462,Lily Hamid,HR,Employee Relations Manager,Ivan Malik,False,Contract,5.4,2019-08-15,Active,MM Group
+1463,Hafiz Goh,HR,People Operations Executive,Ivan Malik,False,Full-time,4.9,2020-02-14,Active,MM Group
+1464,Eugene Menon,HR,Compensation Analyst,Ivan Malik,False,Full-time,3.1,2021-12-02,Active,MM Group
+1465,Daniel Malik,HR,Employee Relations Manager,Ivan Malik,False,Full-time,14.5,2010-07-12,Active,MM Group
+1466,James Rahman,HR,Employee Relations Manager,Ivan Malik,False,Full-time,4.6,2020-06-03,Active,MM Group
+1467,Rina Ooi,HR,Talent Acquisition Specialist,Ivan Malik,False,Part-time,14.0,2011-01-10,Active,MM Group
+1468,Elaine Aziz,Legal,Intellectual Property Analyst,Prakash Chua,False,Full-time,8.2,2016-10-28,Active,MM Group
+1469,Prakash Wong,Legal,Contract Specialist,Prakash Chua,False,Part-time,12.0,2013-01-09,Active,MM Group
+1470,Hafiz Chan,Legal,Compliance Officer,Prakash Chua,False,Contract,2.1,2022-12-02,Active,MM Group
+1471,Yazid Hassan,Legal,Legal Executive,Prakash Chua,False,Full-time,2.9,2022-02-13,Active,MM Group
+1472,Terry Aziz,Legal,Contract Specialist,Prakash Chua,False,Full-time,14.5,2010-07-12,Active,MM Group
+1473,Harish Tan,Legal,Compliance Officer,Prakash Chua,False,Part-time,1.9,2023-02-13,Active,MM Group
+1474,Cheryl Karim,Legal,Company Secretary,Prakash Chua,False,Part-time,8.6,2016-06-03,Active,MM Group
+1475,Jason Hamid,Legal,Regulatory Affairs Manager,Prakash Chua,False,Contract,5.9,2019-02-14,Active,MM Group
+1476,Elaine Rashid,Legal,Legal Counsel,Prakash Chua,False,Full-time,2.7,2022-04-27,Active,MM Group
+1477,Harish Singh,Legal,Legal Counsel,Prakash Chua,False,Full-time,6.5,2018-07-10,Active,MM Group
+1478,Ridzwan Teh,Legal,Contract Specialist,Prakash Chua,False,Full-time,5.6,2019-06-04,Active,MM Group
+1479,Kavya Karim,Legal,Regulatory Affairs Manager,Prakash Chua,False,Full-time,7.5,2017-07-10,Active,MM Group
+1480,Ridzwan Hamid,Legal,Contract Specialist,Diana Lim,False,Full-time,5.1,2019-12-03,Active,MM Group
+1481,Michelle Ooi,Legal,Contract Specialist,Diana Lim,False,Contract,0.8,2024-03-20,Active,MM Group
+1482,Harish Yap,Legal,Company Secretary,Diana Lim,False,Full-time,14.0,2011-01-10,Active,MM Group
+1483,Wendy Chua,Legal,Contract Specialist,Diana Lim,False,Part-time,8.5,2016-07-10,Active,MM Group
+1484,Amelia Abdullah,Legal,Regulatory Affairs Manager,Diana Lim,False,Contract,3.9,2021-02-13,Active,MM Group
+1485,Shirley Karim,Corporate Affairs,ESG Analyst,Linda Chua,False,Part-time,14.5,2010-07-12,Active,MM Group
+1486,Christopher Aziz,Corporate Affairs,ESG Analyst,Linda Chua,False,Full-time,9.0,2016-01-09,Active,MM Group
+1487,Natasha Chua,Corporate Affairs,Sustainability Lead,Linda Chua,False,Full-time,12.3,2012-09-22,Active,MM Group
+1488,Grace Chan,Corporate Affairs,ESG Analyst,Linda Chua,False,Full-time,10.2,2014-10-29,Active,MM Group
+1489,Sarah Nair,Corporate Affairs,ESG Analyst,Linda Chua,False,Full-time,2.2,2022-10-26,Active,MM Group
+1490,Azlan Rahman,Corporate Affairs,Government Relations Executive,Linda Chua,False,Part-time,6.6,2018-06-03,Active,MM Group
+1491,Christopher Yusof,Corporate Affairs,Sustainability Lead,Linda Chua,False,Part-time,3.2,2021-10-26,Active,MM Group
+1492,Shankar Chua,Corporate Affairs,Public Affairs Manager,Linda Chua,False,Full-time,8.5,2016-07-10,Active,MM Group
+1493,Farid Chua,Corporate Affairs,Public Affairs Manager,Linda Chua,False,Part-time,5.1,2019-12-03,Active,MM Group
+1494,Siti Hassan,Corporate Affairs,Public Affairs Manager,Linda Chua,False,Full-time,14.3,2010-09-23,Active,MM Group
+1495,Mohamed Rahman,Corporate Affairs,Media Relations Specialist,Linda Chua,False,Contract,14.5,2010-07-12,Active,MM Group
+1496,Shirley Ismail,Corporate Affairs,Public Affairs Manager,Linda Chua,False,Full-time,10.4,2014-08-16,Active,MM Group
+1497,Shirley Yap,Corporate Affairs,Corporate Communications Manager,Linda Chua,False,Full-time,1.7,2023-04-27,Active,MM Group
+1498,Daniel Wong,Corporate Affairs,Media Relations Specialist,Linda Chua,False,Full-time,4.5,2020-07-09,Active,MM Group
+1499,Kevin Abdullah,Corporate Affairs,Stakeholder Engagement Manager,Linda Chua,False,Full-time,8.7,2016-04-28,Active,MM Group
