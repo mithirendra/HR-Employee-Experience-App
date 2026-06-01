@@ -244,6 +244,27 @@ def apply_vibe_style():
         div[data-testid="stButton"] > button:hover p {
             color: #ffffff !important;
         }
+        
+        /* ── Link buttons ────────────────────────────────────────────────────── */
+        [data-testid="stLinkButton"] a {
+            background-color: #505050 !important;
+            color: #ffffff !important;
+            border: none !important;
+            border-radius: 8px !important;
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 500 !important;
+        }
+
+        [data-testid="stLinkButton"] a:hover {
+            background-color: #f49052 !important;
+            color: #ffffff !important;
+        }
+
+        [data-testid="stLinkButton"] a p {
+            color: #ffffff !important;
+            font-family: 'Montserrat', sans-serif !important;
+            font-weight: 500 !important;
+        }
 
         /* ── Input fields ────────────────────────────────────────────────── */
         .stTextInput > div > div > input,
@@ -387,6 +408,29 @@ def show_sidebar():
         st.page_link("pages/5_Kudos.py",        label="⭐  Kudos")
         st.page_link("pages/6_Connect.py",      label="📣  Connect")
 
+        st.divider()
+
+         # ── Contact links ─────────────────────────────────────────────────────
+        st.markdown("""
+        <div style='font-size:12px; color:#9a8880;
+                    text-align:center; margin-top:16px;
+                    margin-bottom:16px; line-height:1.6;'>
+            This app is a <strong>DEMO VERSION</strong> with limited views.
+            <br><br>
+            Contact Mitma Consulting to get access to the
+            <strong>FULL VERSION</strong>.
+        </div>
+        """, unsafe_allow_html=True)
+        st.link_button(
+            "Contact Mitma Consulting →",
+            "https://mitmaconsulting.framer.ai/contact",
+            use_container_width=True
+        )
+        st.link_button(
+            "Connect on LinkedIn →",
+            "https://www.linkedin.com/in/mithirendra-maniam/",
+            use_container_width=True
+        )
         st.divider()
 
         # ── Sign out ──────────────────────────────────────────────────────
