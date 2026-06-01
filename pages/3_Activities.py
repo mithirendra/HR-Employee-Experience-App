@@ -12,7 +12,7 @@ from utils.helpers import (
     filter_pulse_by_role, filter_kudos_by_role,
     engagement_color, format_delta,
     is_logged_in, get_role, get_emp_id, get_manager_name,
-    apply_vibe_style, show_footer,
+    apply_vibe_style, show_footer, show_sidebar,
 )
 
 # ── Guard ─────────────────────────────────────────────────────────────────────
@@ -24,8 +24,8 @@ if not is_logged_in():
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title = "Activities — Vibe",
-    page_icon  = "🎯",
+    page_title = "Activities — VIBE",
+    page_icon  = "assets/mitma_favicon.png",
     layout     = "wide",
 )
 apply_vibe_style()
@@ -42,44 +42,7 @@ role_colors = {
 }
 bg, fg = role_colors.get(role, ("#eee", "#333"))
 
-with st.sidebar:
-    st.markdown("""
-    <div style='padding:8px 0 12px;'>
-        <span style='font-size:20px; font-weight:500;
-                     color:#2C2C2A;'>🔵 Vibe</span>
-        <div style='font-size:10px; color:#a07050; margin-top:2px;'>
-            Employee Experience Platform
-        </div>
-    </div>
-    """, unsafe_allow_html=True)
-    st.divider()
-    st.markdown(f"""
-    <div style='margin-bottom:12px;'>
-        <div style='font-size:13px; font-weight:500;
-                    color:#2C2C2A;'>{emp_name}</div>
-        <div style='font-size:11px; color:#a07050;
-                    margin-top:2px;'>{dept}</div>
-        <span style='font-size:10px; font-weight:500;
-                     background:{bg}; color:{fg};
-                     padding:2px 8px; border-radius:10px;
-                     display:inline-block;
-                     margin-top:6px;'>{role}</span>
-    </div>
-    """, unsafe_allow_html=True)
-    st.divider()
-    st.markdown("**Navigate**")
-    st.page_link("app.py",                  label="🏠  Home")
-    st.page_link("pages/1_Pulse_Survey.py", label="📊  Pulse Survey")
-    st.page_link("pages/2_Wellbeing.py",    label="💚  Wellbeing")
-    st.page_link("pages/3_Activities.py",   label="🎯  Activities")
-    st.page_link("pages/4_Rewards.py",      label="🎁  Rewards")
-    st.page_link("pages/5_Kudos.py",        label="⭐  Kudos")
-    st.page_link("pages/6_Connect.py",      label="📣  Connect")
-    st.divider()
-    if st.button("Sign out"):
-        for key in list(st.session_state.keys()):
-            del st.session_state[key]
-        st.switch_page("app.py")
+show_sidebar()
 
 # ── Load data ─────────────────────────────────────────────────────────────────
 emp_id   = get_emp_id()
@@ -524,7 +487,7 @@ elif role == "HR":
             xaxis_title         = "",
             yaxis_title         = "",
         )
-        st.plotly_chart(fig, use_container_width=True)
+        st.plotly_chart(fig)
 
     with col2:
         # ── Activities by format ──────────────────────────────────────────────
@@ -544,7 +507,7 @@ elif role == "HR":
             margin        = dict(l=0, r=0, t=0, b=0),
             paper_bgcolor = "#fffbf8",
         )
-        st.plotly_chart(fig2, use_container_width=True)
+        st.plotly_chart(fig2)
 
     st.markdown("---")
 

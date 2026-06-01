@@ -3,6 +3,7 @@
 # Entry point — login screen, sidebar, home page routing by role.
 
 import streamlit as st
+import os
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
@@ -10,15 +11,16 @@ from utils.helpers import (
     load_employees, load_pulse, load_kudos, load_activities,
     filter_pulse_by_role, filter_kudos_by_role,
     engagement_color, format_delta, is_logged_in,
-    get_role, get_emp_id, get_manager_name, apply_vibe_style,
-    show_footer,
+    get_role, get_emp_id, get_manager_name,
+    apply_vibe_style, show_footer, get_logo_base64,
+    show_sidebar,
 )
 
 
 # Must be the first Streamlit command in the file
 st.set_page_config(
-    page_title            = "Vibe — Mitma Consulting",
-    page_icon             = "🔵",
+    page_title            = "VIBE App - Demo | Mitma Consulting",
+    page_icon             = "assets/mitma_favicon.png",
     layout                = "wide",
     initial_sidebar_state = "expanded",
 )
@@ -28,29 +30,51 @@ apply_vibe_style()
 
 # ── Login screen ──────────────────────────────────────────────────────────────
 def show_login():
+    """Render the Vibe login screen."""
 
-    # Centre the login card using columns
+    # Centre the login card using 3 columns
+    # Middle column (1.2) is wider than the two empty side columns (1)
     col1, col2, col3 = st.columns([1, 1.2, 1])
 
     with col2:
+        # Add vertical spacing at the top so the card sits in the middle
         st.markdown("<br><br>", unsafe_allow_html=True)
 
-        # Vibe branding
-        st.markdown("""
+        # ── Branding ──────────────────────────────────────────────────────────
+        # Load Mitma logo as base64 — embedded directly in HTML
+        # Falls back to emoji if logo file not found
+        logo_b64  = get_logo_base64()
+
+        logo_html = (
+            f"<img src='data:image/png;base64,{logo_b64}' "
+            f"style='height:30px; margin-bottom:12px;'>"
+            if logo_b64 else "🔵"
+        )
+
+        # Render logo, app name, tagline and Mitma branding
+        # text-align:center centres everything in the column
+        st.markdown(f"""
         <div style='text-align:center; margin-bottom:32px;'>
-            <div style='font-size:42px;'>🔵</div>
-            <div style='font-size:28px; font-weight:500;
-                        color:#2C2C2A; margin-top:8px;'>Vibe</div>
-            <div style='font-size:13px; color:#a07050; margin-top:4px;'>
-                Employee Experience Platform
+            {logo_html}
+            <div style='font-size:28px; font-weight:600;
+                        color:#000000; margin-top:8px;
+                        font-family:Montserrat,sans-serif;'>VIBE</div>
+            <div style='font-size:13px; color:#a07050;
+                        margin-top:4px;
+                        font-family:Montserrat,sans-serif;'>
+                EMPLOYEE EXPERIENCE PLATFORM
             </div>
-            <div style='font-size:11px; color:#c0a080; margin-top:2px;'>
+            <div style='font-size:11px; color:#c0a080;
+                        margin-top:2px;
+                        font-family:Montserrat,sans-serif;'>
                 By Mitma Consulting
             </div>
         </div>
         """, unsafe_allow_html=True)
 
-        # Role selector
+        # ── Role selector ─────────────────────────────────────────────────────
+        # label_visibility="collapsed" hides the Streamlit label
+        # We show our own bold label above instead for styling control
         st.markdown("**Select your role**")
         role = st.selectbox(
             label            = "Role",
@@ -58,7 +82,8 @@ def show_login():
             label_visibility = "collapsed",
         )
 
-        # Employee ID input
+        # ── Employee ID input ─────────────────────────────────────────────────
+        # Same pattern — custom label above, Streamlit label hidden
         st.markdown("**Employee ID**")
         emp_id_input = st.text_input(
             label            = "Employee ID",
@@ -68,30 +93,44 @@ def show_login():
 
         st.markdown("<br>", unsafe_allow_html=True)
 
-        # Sign in button
-        if st.button("Sign in to Vibe"):
+        # ── Sign in button — centred ──────────────────────────────────────────
+        # Streamlit buttons default to left — use columns to centre
+        # Empty columns on either side push the button to the middle
+        # ── Sign in button — centred using HTML ───────────────────────────────────
+        # Streamlit buttons can't be reliably centred with CSS
+        # Use st.columns to push button to centre instead
+        col_l, col_m, col_r = st.columns([2, 3, 2])
+        with col_m:
+            sign_in = st.button("Sign in to Vibe", use_container_width=True)
+
+        # ── Login validation and session state ────────────────────────────────
+        # Only runs when the button is clicked
+        if sign_in:
 
             # Must not be empty
             if not emp_id_input.strip():
                 st.error("Please enter your Employee ID.")
                 return
 
-            # Must be a number
+            # Must be a valid integer
             try:
                 emp_id = int(emp_id_input.strip())
             except ValueError:
                 st.error("Employee ID must be a number.")
                 return
 
-            # Must exist in the data
+            # Must exist in the employees CSV
             df_emp  = load_employees()
             emp_row = df_emp[df_emp["employee_id"] == emp_id]
 
             if emp_row.empty:
-                st.error(f"Employee ID {emp_id} not found. Try a number between 1000 and 1499.")
+                st.error(
+                    f"Employee ID {emp_id} not found. "
+                    f"Try a number between 1000 and 1499.")
                 return
 
-            # Store in session state — persists across all pages
+            # Store all login details in session state
+            # These persist across all pages for the session
             st.session_state.role         = role
             st.session_state.emp_id       = emp_id
             st.session_state.emp_name     = emp_row.iloc[0]["name"]
@@ -99,81 +138,21 @@ def show_login():
             st.session_state.manager_name = emp_row.iloc[0]["manager"]
             st.session_state.job_title    = emp_row.iloc[0]["job_title"]
 
-            # Rerun the app — now is_logged_in() returns True
+            # Rerun the app — is_logged_in() now returns True
+            # Main router picks this up and shows the home page
             st.rerun()
 
-        # Helper text
+        # ── Helper text ───────────────────────────────────────────────────────
+        # Shown below the button — guides demo users on what IDs to use
         st.markdown("""
         <div style='text-align:center; margin-top:16px;
-                    font-size:11px; color:#c0a080;'>
-            Demo app · Use any Employee ID between 1000 and 1499
+                    font-size:11px; color:#c0a080;
+                    font-family:Montserrat,sans-serif;'>
+            Demo app · Use any Employee ID between 1000 and 1499<br>
+            Select any role to explore different views
         </div>
         """, unsafe_allow_html=True)
 
-#── Sidebar navigation ────────────────────────────────────────────────────────
-def show_sidebar():
-
-    role     = get_role()
-    emp_name = st.session_state.get("emp_name", "")
-    dept     = st.session_state.get("department", "")
-
-    # Role badge colours — matches UX mockups
-    role_colors = {
-        "Employee": ("#E1F5EE", "#085041"),
-        "Manager":  ("#E6F1FB", "#0C447C"),
-        "HR":       ("#FAECE7", "#712B13"),
-    }
-    bg, fg = role_colors.get(role, ("#eee", "#333"))
-
-    with st.sidebar:
-
-        # Logo
-        st.markdown("""
-        <div style='padding:8px 0 12px;'>
-            <span style='font-size:20px; font-weight:500;
-                         color:#2C2C2A;'>🔵 Vibe</span>
-            <div style='font-size:10px; color:#a07050; margin-top:2px;'>
-                An Employee Experience Platform<br>By Mitma Consulting
-            </div>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.divider()
-
-        # User info and role badge
-        st.markdown(f"""
-        <div style='margin-bottom:12px;'>
-            <div style='font-size:13px; font-weight:500;
-                        color:#2C2C2A;'>{emp_name}</div>
-            <div style='font-size:11px; color:#a07050;
-                        margin-top:2px;'>{dept}</div>
-            <span style='font-size:10px; font-weight:500;
-                         background:{bg}; color:{fg};
-                         padding:2px 8px; border-radius:10px;
-                         display:inline-block;
-                         margin-top:6px;'>{role}</span>
-        </div>
-        """, unsafe_allow_html=True)
-
-        st.divider()
-
-        # Navigation links
-        st.markdown("**Navigate**")
-        st.page_link("app.py",                   label="🏠  Home")
-        st.page_link("pages/1_Pulse_Survey.py",  label="📊  Pulse Survey")
-        st.page_link("pages/2_Wellbeing.py",     label="💚  Wellbeing")
-        st.page_link("pages/3_Activities.py",    label="🎯  Activities")
-        st.page_link("pages/4_Rewards.py",       label="🎁  Rewards")
-        st.page_link("pages/5_Kudos.py",         label="⭐  Kudos")
-        st.page_link("pages/6_Connect.py",       label="📣  Connect")
-
-        st.divider()
-
-        # Sign out — clears all session state and returns to login
-        if st.button("Sign out"):
-            for key in list(st.session_state.keys()):
-                del st.session_state[key]
-            st.switch_page("app.py")
 
 # ── Main router ───────────────────────────────────────────────────────────────
 # This is the core logic — runs every time the page loads.
@@ -315,7 +294,7 @@ else:
                     yaxis_range   = [0, 100],
                     showlegend    = False,
                 )
-                st.plotly_chart(fig, use_container_width=True)
+                st.plotly_chart(fig)
 
             st.markdown("---")
 
@@ -714,7 +693,7 @@ else:
                 plot_bgcolor  = "#fffbf8",
                 paper_bgcolor = "#fffbf8",
             )
-            st.plotly_chart(fig, use_container_width=True)
+            st.plotly_chart(fig)
 
         with col2:
             st.markdown("##### Flagged departments")
@@ -809,5 +788,6 @@ else:
                                  color:#E24B4A;'>Review →</span>
                 </div>
                 """, unsafe_allow_html=True)
+    
     
 show_footer()
