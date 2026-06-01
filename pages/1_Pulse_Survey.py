@@ -137,7 +137,7 @@ if role == "Employee":
 
     else:
         # ── Not yet submitted — show the survey form ──────────────────────────
-        st.markdown(f"##### Week {latest_week} pulse — please rate each dimension 1 to 10")
+        st.markdown(f"##### {latest_week_label} — please rate each dimension 1 to 10")
         st.markdown("""
         <div style='font-size:12px; color:#a07050; margin-bottom:16px;'>
             1 = Strongly disagree · 10 = Strongly agree
