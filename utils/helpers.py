@@ -7,6 +7,12 @@ import os
 import pandas as pd
 import streamlit as st
 import base64
+from datetime import datetime
+
+# Global today reference — used across all pages for consistent filtering
+TODAY        = pd.Timestamp.today().normalize()
+CURRENT_YEAR = datetime.now().year
+CURRENT_MONTH = datetime.now().strftime("%b")
 
 # ── File paths ────────────────────────────────────────────────────────────────
 # Builds paths to each CSV relative to this file's location.

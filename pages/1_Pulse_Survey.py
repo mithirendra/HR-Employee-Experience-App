@@ -8,6 +8,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+from datetime import datetime
 from utils.helpers import (
     load_employees, load_pulse,
     filter_pulse_by_role,
@@ -26,7 +27,7 @@ if not is_logged_in():
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title = "Pulse Survey — VIBE",
+    page_title = "Pulse Survey — VIBE Demo | Mitma Consulting",
     page_icon  = "assets/mitma_favicon.png",
     layout     = "wide",
 )
@@ -49,6 +50,12 @@ bg, fg = role_colors.get(role, ("#eee", "#333"))
 
 show_sidebar()
 
+# ── Date references ───────────────────────────────────────────────────────────
+# TODAY ensures we never show future data even if CSV extends beyond today
+# CURRENT_YEAR filters points and stats to the current calendar year
+TODAY        = pd.Timestamp.today().normalize()
+CURRENT_YEAR = datetime.now().year
+
 # ── Load data ─────────────────────────────────────────────────────────────────
 emp_id   = get_emp_id()
 mgr_name = get_manager_name()
@@ -58,6 +65,18 @@ df_pulse      = load_pulse()
 
 # Filter pulse data based on role
 df_pulse_role = filter_pulse_by_role(df_pulse, role, emp_id, mgr_name)
+
+# Filter to today — no future data shown
+df_pulse_role = df_pulse_role[df_pulse_role["week_date"] <= TODAY]
+df_pulse      = df_pulse[df_pulse["week_date"] <= TODAY]
+
+# Get latest week number and label
+latest_week       = df_pulse_role["week_number"].max() \
+                    if not df_pulse_role.empty else 0
+latest_week_label = df_pulse_role[
+    df_pulse_role["week_number"] == latest_week
+]["week_date"].iloc[0].strftime("Week %W · %b %Y") \
+    if not df_pulse_role.empty else "No data"
 
 # ── Page header ───────────────────────────────────────────────────────────────
 st.markdown("## 📊 Pulse Survey")
@@ -69,8 +88,6 @@ if role == "Employee":
     # ── Employee view — submit weekly pulse ───────────────────────────────────
     # Shows the 5C survey form + open text + submission button
     # After submission, shows confirmation and points earned
-
-    latest_week = df_pulse["week_number"].max()
 
     # Check if employee already submitted this week
     # Track submission in session state instead of checking the CSV
@@ -187,11 +204,10 @@ if role == "Employee":
 elif role == "Manager":
 
     # ── Manager view — team response tracker + sentiment + driver analysis ────
-    latest_week = df_pulse["week_number"].max()
     latest_team = df_pulse_role[df_pulse_role["week_number"] == latest_week]
 
     # ── Response tracker ──────────────────────────────────────────────────────
-    st.markdown("##### Team pulse response — week " + str(latest_week))
+    st.markdown(f"##### Team pulse response — {latest_week_label}")
 
     # Get all employees under this manager
     team_members = df_employees[
@@ -294,11 +310,10 @@ elif role == "Manager":
 elif role == "HR":
 
     # ── HR view — org-wide response rates + sentiment + driver analysis ───────
-    latest_week  = df_pulse["week_number"].max()
     latest_pulse = df_pulse[df_pulse["week_number"] == latest_week]
 
     # ── Response rate by department ───────────────────────────────────────────
-    st.markdown("##### Response rates by department — week " + str(latest_week))
+    st.markdown(f"##### Response rates by department — {latest_week_label}")
 
     # Count responses per department this week
     dept_responses = latest_pulse.groupby("department").size().reset_index()

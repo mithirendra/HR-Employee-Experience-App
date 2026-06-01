@@ -1,43 +1,43 @@
 activity_id,name,type,department_target,date,week_number,format,capacity,points,company
-ACT0001,Team Lunch and Learn,Social,Finance,2025-01-09,1,In-Person,46,25,MM Group
-ACT0002,Young Professionals Meetup,ERG,All,2025-01-23,3,In-Person,107,25,MM Group
-ACT0003,Communication Skills Training,Learning,Corporate Affairs,2025-01-22,3,In-Person,43,25,MM Group
-ACT0004,Year-End Celebration Dinner,Social,Sales,2025-02-04,5,In-Person,20,25,MM Group
-ACT0005,Young Professionals Meetup,ERG,Corporate Affairs,2025-02-19,7,Virtual,19,25,MM Group
-ACT0006,DEI Fireside Chat,ERG,Retail,2025-03-07,9,In-Person,33,25,MM Group
-ACT0007,All-Hands Company Update,Town Hall,All,2025-03-03,9,In-Person,73,25,MM Group
-ACT0008,Morning Wellness Walk,Wellness,Enterprise,2025-03-17,11,In-Person,36,25,MM Group
-ACT0009,Mental Health Awareness Talk,Wellness,Sales,2025-03-18,11,In-Person,16,25,MM Group
-ACT0010,Morning Wellness Walk,Wellness,Technology,2025-04-03,13,In-Person,37,25,MM Group
-ACT0011,Young Professionals Meetup,ERG,Enterprise,2025-04-02,13,In-Person,23,25,MM Group
-ACT0012,Women in Leadership Forum,ERG,All,2025-04-14,15,Virtual,112,25,MM Group
-ACT0013,Mental Health Awareness Talk,Wellness,Enterprise,2025-04-28,17,In-Person,16,25,MM Group
-ACT0014,AI in the Workplace Session,Learning,All,2025-05-02,17,Virtual,146,25,MM Group
-ACT0015,Morning Wellness Walk,Wellness,Marketing,2025-05-13,19,In-Person,46,25,MM Group
-ACT0016,Food Bank Volunteer Drive,Volunteering,All,2025-05-16,19,Virtual,199,25,MM Group
-ACT0017,Department Town Hall,Town Hall,All,2025-05-30,21,Virtual,121,25,MM Group
-ACT0018,DEI Fireside Chat,ERG,Technology,2025-05-27,21,In-Person,32,25,MM Group
-ACT0019,Financial Wellness Seminar,Wellness,Enterprise,2025-06-09,23,In-Person,28,25,MM Group
-ACT0020,AI in the Workplace Session,Learning,HR,2025-06-11,23,Virtual,18,25,MM Group
-ACT0021,New Joiner Welcome Breakfast,Social,Legal,2025-06-25,25,In-Person,36,25,MM Group
-ACT0022,Women in Leadership Forum,ERG,All,2025-07-09,27,In-Person,148,25,MM Group
-ACT0023,Nutrition and Healthy Eating Workshop,Wellness,Legal,2025-07-09,27,In-Person,29,25,MM Group
-ACT0024,Year-End Celebration Dinner,Social,Finance,2025-07-23,29,In-Person,41,25,MM Group
-ACT0025,Food Bank Volunteer Drive,Volunteering,All,2025-07-23,29,In-Person,131,25,MM Group
-ACT0026,Financial Wellness Seminar,Wellness,Finance,2025-08-08,31,Virtual,42,25,MM Group
-ACT0027,All-Hands Company Update,Town Hall,All,2025-08-07,31,In-Person,131,25,MM Group
-ACT0028,Morning Wellness Walk,Wellness,All,2025-08-19,33,In-Person,71,25,MM Group
-ACT0029,Financial Wellness Seminar,Wellness,All,2025-09-02,35,In-Person,75,25,MM Group
-ACT0030,Year-End Celebration Dinner,Social,Finance,2025-09-05,35,In-Person,49,25,MM Group
-ACT0031,AI in the Workplace Session,Learning,Sales,2025-09-16,37,In-Person,49,25,MM Group
-ACT0032,Community Clean-Up Day,Volunteering,Technology,2025-09-18,37,Virtual,18,25,MM Group
-ACT0033,Nutrition and Healthy Eating Workshop,Wellness,All,2025-10-01,39,In-Person,88,25,MM Group
-ACT0034,AI in the Workplace Session,Learning,All,2025-09-30,39,In-Person,131,25,MM Group
-ACT0035,Food Bank Volunteer Drive,Volunteering,Enterprise,2025-10-14,41,In-Person,27,25,MM Group
-ACT0036,Excel and Analytics Clinic,Learning,Technology,2025-10-28,43,In-Person,21,25,MM Group
-ACT0037,Financial Wellness Seminar,Wellness,All,2025-11-13,45,In-Person,126,25,MM Group
-ACT0038,DEI Fireside Chat,ERG,Technology,2025-11-12,45,In-Person,23,25,MM Group
-ACT0039,Mental Health Awareness Talk,Wellness,Legal,2025-11-27,47,In-Person,25,25,MM Group
-ACT0040,DEI Fireside Chat,ERG,Corporate Affairs,2025-12-12,49,Virtual,45,25,MM Group
-ACT0041,New Joiner Welcome Breakfast,Social,All,2025-12-23,51,In-Person,145,25,MM Group
-ACT0042,Nutrition and Healthy Eating Workshop,Wellness,All,2025-12-26,51,Virtual,137,25,MM Group
+ACT0001,Team Lunch and Learn,Social,Finance,2026-01-08,1,In-Person,46,25,MM Group
+ACT0002,Young Professionals Meetup,ERG,All,2026-01-22,3,In-Person,107,25,MM Group
+ACT0003,Communication Skills Training,Learning,Corporate Affairs,2026-01-21,3,In-Person,43,25,MM Group
+ACT0004,Year-End Celebration Dinner,Social,Sales,2026-02-03,5,In-Person,20,25,MM Group
+ACT0005,Young Professionals Meetup,ERG,Corporate Affairs,2026-02-18,7,Virtual,19,25,MM Group
+ACT0006,DEI Fireside Chat,ERG,Retail,2026-03-06,9,In-Person,33,25,MM Group
+ACT0007,All-Hands Company Update,Town Hall,All,2026-03-02,9,In-Person,73,25,MM Group
+ACT0008,Morning Wellness Walk,Wellness,Enterprise,2026-03-16,11,In-Person,36,25,MM Group
+ACT0009,Mental Health Awareness Talk,Wellness,Sales,2026-03-17,11,In-Person,16,25,MM Group
+ACT0010,Morning Wellness Walk,Wellness,Technology,2026-04-02,13,In-Person,37,25,MM Group
+ACT0011,Young Professionals Meetup,ERG,Enterprise,2026-04-01,13,In-Person,23,25,MM Group
+ACT0012,Women in Leadership Forum,ERG,All,2026-04-13,15,Virtual,112,25,MM Group
+ACT0013,Mental Health Awareness Talk,Wellness,Enterprise,2026-04-27,17,In-Person,16,25,MM Group
+ACT0014,AI in the Workplace Session,Learning,All,2026-05-01,17,Virtual,146,25,MM Group
+ACT0015,Morning Wellness Walk,Wellness,Marketing,2026-05-12,19,In-Person,46,25,MM Group
+ACT0016,Food Bank Volunteer Drive,Volunteering,All,2026-05-15,19,Virtual,199,25,MM Group
+ACT0017,Department Town Hall,Town Hall,All,2026-05-29,21,Virtual,121,25,MM Group
+ACT0018,DEI Fireside Chat,ERG,Technology,2026-05-26,21,In-Person,32,25,MM Group
+ACT0019,Financial Wellness Seminar,Wellness,Enterprise,2026-06-08,23,In-Person,28,25,MM Group
+ACT0020,AI in the Workplace Session,Learning,HR,2026-06-10,23,Virtual,18,25,MM Group
+ACT0021,New Joiner Welcome Breakfast,Social,Legal,2026-06-24,25,In-Person,36,25,MM Group
+ACT0022,Women in Leadership Forum,ERG,All,2026-07-08,27,In-Person,148,25,MM Group
+ACT0023,Nutrition and Healthy Eating Workshop,Wellness,Legal,2026-07-08,27,In-Person,29,25,MM Group
+ACT0024,Year-End Celebration Dinner,Social,Finance,2026-07-22,29,In-Person,41,25,MM Group
+ACT0025,Food Bank Volunteer Drive,Volunteering,All,2026-07-22,29,In-Person,131,25,MM Group
+ACT0026,Financial Wellness Seminar,Wellness,Finance,2026-08-07,31,Virtual,42,25,MM Group
+ACT0027,All-Hands Company Update,Town Hall,All,2026-08-06,31,In-Person,131,25,MM Group
+ACT0028,Morning Wellness Walk,Wellness,All,2026-08-18,33,In-Person,71,25,MM Group
+ACT0029,Financial Wellness Seminar,Wellness,All,2026-09-01,35,In-Person,75,25,MM Group
+ACT0030,Year-End Celebration Dinner,Social,Finance,2026-09-04,35,In-Person,49,25,MM Group
+ACT0031,AI in the Workplace Session,Learning,Sales,2026-09-15,37,In-Person,49,25,MM Group
+ACT0032,Community Clean-Up Day,Volunteering,Technology,2026-09-17,37,Virtual,18,25,MM Group
+ACT0033,Nutrition and Healthy Eating Workshop,Wellness,All,2026-09-30,39,In-Person,88,25,MM Group
+ACT0034,AI in the Workplace Session,Learning,All,2026-09-29,39,In-Person,131,25,MM Group
+ACT0035,Food Bank Volunteer Drive,Volunteering,Enterprise,2026-10-13,41,In-Person,27,25,MM Group
+ACT0036,Excel and Analytics Clinic,Learning,Technology,2026-10-27,43,In-Person,21,25,MM Group
+ACT0037,Financial Wellness Seminar,Wellness,All,2026-11-12,45,In-Person,126,25,MM Group
+ACT0038,DEI Fireside Chat,ERG,Technology,2026-11-11,45,In-Person,23,25,MM Group
+ACT0039,Mental Health Awareness Talk,Wellness,Legal,2026-11-26,47,In-Person,25,25,MM Group
+ACT0040,DEI Fireside Chat,ERG,Corporate Affairs,2026-12-11,49,Virtual,45,25,MM Group
+ACT0041,New Joiner Welcome Breakfast,Social,All,2026-12-22,51,In-Person,145,25,MM Group
+ACT0042,Nutrition and Healthy Eating Workshop,Wellness,All,2026-12-25,51,Virtual,137,25,MM Group

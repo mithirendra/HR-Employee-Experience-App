@@ -7,6 +7,7 @@
 import streamlit as st
 import pandas as pd
 import plotly.express as px
+from datetime import datetime
 from utils.helpers import (
     load_employees, load_pulse, load_kudos, load_activities,
     filter_pulse_by_role, filter_kudos_by_role,
@@ -24,7 +25,7 @@ if not is_logged_in():
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title = "Activities — VIBE",
+    page_title = "Activities — VIBE Demo | Mitma Consulting",
     page_icon  = "assets/mitma_favicon.png",
     layout     = "wide",
 )
@@ -43,6 +44,11 @@ role_colors = {
 bg, fg = role_colors.get(role, ("#eee", "#333"))
 
 show_sidebar()
+
+# ── Date references ───────────────────────────────────────────────────────────
+TODAY        = pd.Timestamp.today().normalize()
+CURRENT_YEAR = datetime.now().year
+CURRENT_MONTH = datetime.now().strftime("%b")
 
 # ── Load data ─────────────────────────────────────────────────────────────────
 emp_id   = get_emp_id()
@@ -107,7 +113,7 @@ if role == "Employee":
             <div style='font-size:11px; color:#fff3ea;
                         text-transform:uppercase;
                         letter-spacing:.07em;'>
-                Activities + Points
+                Activities + Points · Jan — {CURRENT_MONTH} {CURRENT_YEAR}
             </div>
             <div style='font-size:26px; font-weight:500;
                         color:#fff; margin:4px 0;'>{emp_name}</div>
@@ -148,9 +154,8 @@ if role == "Employee":
     st.markdown("##### Upcoming activities")
 
     # Show activities relevant to this employee's department or org-wide
-    today    = pd.Timestamp("2025-12-01")
     upcoming = df_activities[
-        (df_activities["date"] >= today) &
+        (df_activities["date"] >= TODAY) &
         (
             (df_activities["department_target"] == "All") |
             (df_activities["department_target"] == dept)
@@ -246,21 +251,46 @@ if role == "Employee":
     # ── Leaderboard — org wide ────────────────────────────────────────────────
     st.markdown("##### Org-wide leaderboard")
 
-    # Calculate points for all employees
-    # Only show top 20 for performance
-    all_employees = df_employees.head(50)
-    leaderboard   = []
+    # Vectorised points calculation — much faster than looping
+    # Filter to current year and up to today once
+    pulse_cy = df_pulse[
+        (df_pulse["week_date"].dt.year == CURRENT_YEAR) &
+        (df_pulse["week_date"] <= TODAY)
+    ]
+    kudos_given_cy = df_kudos[
+        (df_kudos["date"].dt.year == CURRENT_YEAR) &
+        (df_kudos["date"] <= TODAY)
+    ]
+    kudos_rcvd_cy = df_kudos[
+        (df_kudos["date"].dt.year == CURRENT_YEAR) &
+        (df_kudos["date"] <= TODAY)
+    ]
 
-    for _, emp in all_employees.iterrows():
-        pts = calculate_points(emp["employee_id"])
-        leaderboard.append({
-            "employee_id": emp["employee_id"],
-            "name":        emp["name"],
-            "department":  emp["department"],
-            "points":      pts["total"],
-        })
+    # Count per employee in one operation
+    pulse_pts   = pulse_cy.groupby("employee_id").size().reset_index()
+    pulse_pts.columns = ["employee_id", "pulse_pts"]
+    pulse_pts["pulse_pts"] *= 20
 
-    leaderboard_df = pd.DataFrame(leaderboard).sort_values(
+    given_pts   = kudos_given_cy.groupby("giver_id").size().reset_index()
+    given_pts.columns = ["employee_id", "given_pts"]
+    given_pts["given_pts"] *= 10
+
+    rcvd_pts    = kudos_rcvd_cy.groupby("recipient_id").size().reset_index()
+    rcvd_pts.columns = ["employee_id", "rcvd_pts"]
+    rcvd_pts["rcvd_pts"] *= 15
+
+    # Merge all into one DataFrame
+    leaderboard_df = df_employees[["employee_id","name","department"]].copy()
+    leaderboard_df = leaderboard_df.merge(pulse_pts,  on="employee_id", how="left")
+    leaderboard_df = leaderboard_df.merge(given_pts,  on="employee_id", how="left")
+    leaderboard_df = leaderboard_df.merge(rcvd_pts,   on="employee_id", how="left")
+    leaderboard_df = leaderboard_df.fillna(0)
+    leaderboard_df["points"] = (
+        leaderboard_df["pulse_pts"] +
+        leaderboard_df["given_pts"] +
+        leaderboard_df["rcvd_pts"]
+    ).astype(int)
+    leaderboard_df = leaderboard_df.sort_values(
         "points", ascending=False).head(20)
 
     # Highlight current employee's row
@@ -300,7 +330,8 @@ elif role == "Manager":
         <div style='font-size:11px; color:#888780;
                     text-transform:uppercase;
                     letter-spacing:.07em;'>
-            Team activities · {dept}
+            Team activities · {dept} ·
+            Jan — {CURRENT_MONTH} {CURRENT_YEAR}
         </div>
         <div style='font-size:26px; font-weight:500;
                     color:#F1EFE8; margin:4px 0;'>{emp_name}</div>
@@ -315,18 +346,43 @@ elif role == "Manager":
         df_employees["manager"] == mgr_name
     ].copy()
 
-    team_points = []
-    for _, emp in team_members.iterrows():
-        pts = calculate_points(emp["employee_id"])
-        team_points.append({
-            "name":    emp["name"],
-            "points":  pts["total"],
-            "pulse":   pts["pulse"],
-            "kudos":   pts["given"] + pts["received"],
-        })
+   # Vectorised — filter once, merge, no looping
+    pulse_cy       = df_pulse[
+        (df_pulse["week_date"].dt.year == CURRENT_YEAR) &
+        (df_pulse["week_date"] <= TODAY)
+    ]
+    kudos_given_cy = df_kudos[
+        (df_kudos["date"].dt.year == CURRENT_YEAR) &
+        (df_kudos["date"] <= TODAY)
+    ]
+    kudos_rcvd_cy  = df_kudos[
+        (df_kudos["date"].dt.year == CURRENT_YEAR) &
+        (df_kudos["date"] <= TODAY)
+    ]
 
-    team_pts_df = pd.DataFrame(team_points).sort_values(
-        "points", ascending=False)
+    pulse_pts = pulse_cy.groupby("employee_id").size().reset_index()
+    pulse_pts.columns = ["employee_id", "pulse_pts"]
+    pulse_pts["pulse_pts"] *= 20
+
+    given_pts = kudos_given_cy.groupby("giver_id").size().reset_index()
+    given_pts.columns = ["employee_id", "given_pts"]
+    given_pts["given_pts"] *= 10
+
+    rcvd_pts  = kudos_rcvd_cy.groupby("recipient_id").size().reset_index()
+    rcvd_pts.columns = ["employee_id", "rcvd_pts"]
+    rcvd_pts["rcvd_pts"] *= 15
+
+    team_pts_df = team_members[["employee_id","name"]].copy()
+    team_pts_df = team_pts_df.merge(pulse_pts, on="employee_id", how="left")
+    team_pts_df = team_pts_df.merge(given_pts, on="employee_id", how="left")
+    team_pts_df = team_pts_df.merge(rcvd_pts,  on="employee_id", how="left")
+    team_pts_df = team_pts_df.fillna(0)
+    team_pts_df["points"] = (
+        team_pts_df["pulse_pts"] +
+        team_pts_df["given_pts"] +
+        team_pts_df["rcvd_pts"]
+    ).astype(int)
+    team_pts_df = team_pts_df.sort_values("points", ascending=False)
 
     # KPI strip
     k1, k2, k3 = st.columns(3)
@@ -374,9 +430,8 @@ elif role == "Manager":
     with col2:
         # ── Upcoming activities for the team ──────────────────────────────────
         st.markdown("##### Upcoming activities")
-        today    = pd.Timestamp("2025-12-01")
         upcoming = df_activities[
-            (df_activities["date"] >= today) &
+            (df_activities["date"] >= TODAY) &
             (
                 (df_activities["department_target"] == "All") |
                 (df_activities["department_target"] == dept)
@@ -417,7 +472,8 @@ elif role == "HR":
             <div style='font-size:11px; color:#AFA9EC;
                         text-transform:uppercase;
                         letter-spacing:.07em;'>
-                Activities + Participation · MM Group
+                Activities + Participation · MM Group ·
+                Jan — {CURRENT_MONTH} {CURRENT_YEAR}
             </div>
             <div style='font-size:26px; font-weight:500;
                         color:#fff; margin:4px 0;'>

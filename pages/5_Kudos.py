@@ -5,10 +5,12 @@
 
 import streamlit as st
 import pandas as pd
+from datetime import datetime
 from utils.helpers import (
     load_employees, load_kudos,
     is_logged_in, get_role, get_emp_id, get_manager_name,
-    apply_vibe_style, show_footer, show_sidebar,
+    apply_vibe_style, show_sidebar, show_footer,
+    filter_kudos_by_role
 )
 
 # ── Guard ─────────────────────────────────────────────────────────────────────
@@ -20,11 +22,17 @@ if not is_logged_in():
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title = "Kudos — VIBE",
+    page_title = "Kudos — VIBE Demo | Mitma Consulting",
     page_icon  = "assets/mitma_favicon.png",
     layout     = "wide",
 )
 apply_vibe_style()
+
+# ── Date references ───────────────────────────────────────────────────────────
+TODAY         = pd.Timestamp.today().normalize()
+CURRENT_YEAR  = datetime.now().year
+CURRENT_MONTH = datetime.now().strftime("%b")
+
 
 # ── Sidebar ───────────────────────────────────────────────────────────────────
 role     = get_role()
@@ -42,12 +50,65 @@ show_sidebar()
 
 # ── Load data ─────────────────────────────────────────────────────────────────
 emp_id       = get_emp_id()
+mgr_name     = get_manager_name()
 df_employees = load_employees()
 df_kudos     = load_kudos()
+
+# Filter Kudos to today — no future data
+df_kudos_todate = df_kudos[df_kudos["date"] <= TODAY]
+
+# Filter by role
+df_kudos_role = filter_kudos_by_role(
+    df_kudos_todate, role, emp_id, mgr_name, df_employees)
 
 # ── Page header ───────────────────────────────────────────────────────────────
 st.markdown("## ⭐ Kudos")
 st.markdown("---")
+
+# Personal Kudos stats — current year only
+kudos_received = len(df_kudos_todate[
+    (df_kudos_todate["recipient_id"] == emp_id) &
+    (df_kudos_todate["date"].dt.year == CURRENT_YEAR)
+])
+kudos_given = len(df_kudos_todate[
+    (df_kudos_todate["giver_id"] == emp_id) &
+    (df_kudos_todate["date"].dt.year == CURRENT_YEAR)
+])
+
+# ── Hero banner ───────────────────────────────────────────────────────────
+st.markdown(f"""
+<div style='background:#f49052; border-radius:12px;
+            padding:20px 24px; margin-bottom:20px;
+            display:flex; align-items:center;
+            justify-content:space-between;'>
+    <div>
+        <div style='font-size:11px; color:#fff3ea;
+                    text-transform:uppercase; letter-spacing:.07em;'>
+            Recognition · Jan — {CURRENT_MONTH} {CURRENT_YEAR}
+        </div>
+        <div style='font-size:26px; font-weight:500;
+                    color:#fff; margin:4px 0;'>{emp_name}</div>
+        <div style='font-size:12px; color:#fff3ea;'>
+            Give recognition · earn points · build culture
+        </div>
+    </div>
+    <div style='display:flex; gap:20px;'>
+        <div style='text-align:center;'>
+            <div style='font-size:32px; font-weight:500;
+                        color:#fff; line-height:1;'>{kudos_received}</div>
+            <div style='font-size:10px; color:#fff3ea;
+                        margin-top:3px;'>Received</div>
+        </div>
+        <div style='text-align:center;'>
+            <div style='font-size:32px; font-weight:500;
+                        color:#fff; line-height:1;'>{kudos_given}</div>
+            <div style='font-size:10px; color:#fff3ea;
+                        margin-top:3px;'>Given</div>
+        </div>
+    </div>
+</div>
+""", unsafe_allow_html=True)
+
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
 # Three tabs — Kudos wall, Give Kudos, My Kudos
@@ -58,9 +119,10 @@ with tab1:
     st.markdown("##### Latest recognition across MM Group")
 
     # Show latest 20 Kudos sorted by date
-    latest_kudos = df_kudos.sort_values("date", ascending=False).head(20)
+    wall_kudos = df_kudos_todate.sort_values(
+            "date", ascending=False).head(100)
 
-    for _, kudo in latest_kudos.iterrows():
+    for _, kudo in wall_kudos.head(20).iterrows():
         # Category colour
         cat_colors = {
             "Teamwork":             "#E1F5EE",
@@ -155,8 +217,8 @@ with tab3:
 
     with col1:
         st.markdown("##### Kudos I received")
-        received = df_kudos[
-            df_kudos["recipient_id"] == emp_id
+        received = df_kudos_todate[
+            df_kudos_todate["recipient_id"] == emp_id
         ].sort_values("date", ascending=False)
 
         if received.empty:
@@ -184,8 +246,8 @@ with tab3:
 
     with col2:
         st.markdown("##### Kudos I gave")
-        given = df_kudos[
-            df_kudos["giver_id"] == emp_id
+        given = df_kudos_todate[
+            df_kudos_todate["giver_id"] == emp_id
         ].sort_values("date", ascending=False)
 
         if given.empty:

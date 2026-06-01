@@ -9,6 +9,9 @@ from utils.helpers import (
     is_logged_in, get_role, get_emp_id, get_manager_name,
     apply_vibe_style, show_footer, show_sidebar,
 )
+from datetime import datetime
+CURRENT_YEAR = datetime.now().year
+CURRENT_MONTH = datetime.now().strftime("%b")
 
 # ── Guard ─────────────────────────────────────────────────────────────────────
 if not is_logged_in():
@@ -19,7 +22,7 @@ if not is_logged_in():
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title = "Rewards — VIBE",
+    page_title = "Rewards — VIBE Demo | Mitma Consulting",
     page_icon  = "assets/mitma_favicon.png",
     layout     = "wide",
 )
@@ -99,18 +102,18 @@ st.markdown("---")
 st.markdown("##### Redemption tiers")
 
 TIERS = [
-    {"tier": "Tier 1", "points": 100,  "reward": "Voucher S",
-     "desc": "Small voucher — food, retail, or entertainment",
-     "color": "#E1F5EE", "text": "#085041"},
-    {"tier": "Tier 2", "points": 300,  "reward": "Voucher M",
-     "desc": "Medium voucher — dining, shopping, or wellness",
-     "color": "#FAEEDA", "text": "#633806"},
-    {"tier": "Tier 3", "points": 600,  "reward": "Merchandise",
-     "desc": "Branded merchandise or experience voucher",
-     "color": "#FAECE7", "text": "#712B13"},
-    {"tier": "Tier 4", "points": 1200, "reward": "Premium reward",
-     "desc": "Premium experience — travel, tech, or luxury",
-     "color": "#EEEDFE", "text": "#3C3489"},
+    {"tier": "Tier 1", "points": 500,  "reward": "Voucher S",
+    "desc": "Food, entertainment, bookstore",
+    "color": "#E1F5EE", "text": "#085041"},
+    {"tier": "Tier 2", "points": 1000, "reward": "Voucher M",
+    "desc": "Shopping, wellness, transport, learning",
+    "color": "#FAEEDA", "text": "#633806"},
+    {"tier": "Tier 3", "points": 1500, "reward": "Merchandise",
+    "desc": "Branded merch, dining, fitness tracker",
+    "color": "#FAECE7", "text": "#712B13"},
+    {"tier": "Tier 4", "points": 2000, "reward": "Premium reward",
+    "desc": "Staycation, iPad Mini, extra annual leave",
+    "color": "#EEEDFE", "text": "#3C3489"},
 ]
 
 cols = st.columns(4)

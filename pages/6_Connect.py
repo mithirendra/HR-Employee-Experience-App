@@ -4,9 +4,12 @@
 # Full logic in Version 1
 
 import streamlit as st
+import pandas as pd
+from datetime import datetime
 from utils.helpers import (
-    is_logged_in, get_role, get_emp_id,
-    apply_vibe_style, show_footer, show_sidebar,
+    is_logged_in, get_role, get_emp_id, get_manager_name,
+    load_employees, load_pulse,
+    apply_vibe_style, show_sidebar, show_footer,
 )
 
 # ── Guard ─────────────────────────────────────────────────────────────────────
@@ -18,7 +21,7 @@ if not is_logged_in():
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title = "Connect — VIBE",
+    page_title = "Connect — VIBE Demo | Mitma Consulting",
     page_icon  = "assets/mitma_favicon.png",
     layout     = "wide",
 )
@@ -37,6 +40,22 @@ role_colors = {
 bg, fg = role_colors.get(role, ("#eee", "#333"))
 
 show_sidebar()
+
+# ── Date references ───────────────────────────────────────────────────────────
+TODAY         = pd.Timestamp.today().normalize()
+CURRENT_YEAR  = datetime.now().year
+CURRENT_MONTH = datetime.now().strftime("%b")
+
+emp_id   = get_emp_id()
+mgr_name = get_manager_name()
+df_employees = load_employees()
+df_pulse     = load_pulse()
+
+# Filter pulse to current year and up to today
+df_pulse_current = df_pulse[
+    (df_pulse["week_date"].dt.year == CURRENT_YEAR) &
+    (df_pulse["week_date"] <= TODAY)
+]
 
 # ── Page header ───────────────────────────────────────────────────────────────
 st.markdown("## 📣 Connect")
@@ -68,35 +87,45 @@ with tab1:
     # Static news items for demo
     NEWS = [
         {
-            "title":   "Q4 2025 All-Hands recap",
-            "date":    "15 Dec 2025",
-            "body":    "Thank you to everyone who joined our Q4 All-Hands. "
-                       "Key highlights: strong engagement scores across Marketing "
-                       "and HR, new wellness programme launching in January, "
-                       "and our annual Vibe Awards ceremony on 20 December.",
-            "tag":     "Company update",
+            "title":     "Q1 2026 All-Hands recap",
+            "date":      "15 Apr 2026",
+            "body":      "Thank you to everyone who joined our Q1 All-Hands. "
+                        "Key highlights: strong engagement scores across Marketing "
+                        "and HR, new wellness programme launching in May, "
+                        "and our Vibe Awards ceremony on 30 April.",
+            "tag":       "Company update",
             "tag_color": "#E6F1FB",
             "tag_text":  "#0C447C",
         },
         {
-            "title":   "New year wellness programme",
-            "date":    "10 Dec 2025",
-            "body":    "We are launching a new 8-week wellness programme in "
-                       "January 2026. All employees can sign up via the "
-                       "Activities page. Each session earns 25 Vibe points.",
-            "tag":     "Wellness",
+            "title":     "New wellness programme — May 2026",
+            "date":      "10 Apr 2026",
+            "body":      "We are launching an 8-week wellness programme in May. "
+                        "All employees can sign up via the Activities page. "
+                        "Each session earns 25 Vibe points.",
+            "tag":       "Wellness",
             "tag_color": "#E1F5EE",
             "tag_text":  "#085041",
         },
         {
-            "title":   "Vibe Awards — nominations open",
-            "date":    "05 Dec 2025",
-            "body":    "Nominations are now open for the inaugural Vibe Awards. "
-                       "Recognise a colleague who has gone above and beyond "
-                       "this year. Submit your nomination via the Kudos page.",
-            "tag":     "Recognition",
+            "title":     "Vibe Awards — nominations open",
+            "date":      "05 Apr 2026",
+            "body":      "Nominations are now open for the Vibe Awards. "
+                        "Recognise a colleague who has gone above and beyond "
+                        "this year. Submit your nomination via the Kudos page.",
+            "tag":       "Recognition",
             "tag_color": "#FAEEDA",
             "tag_text":  "#633806",
+        },
+        {
+            "title":     "Hybrid work policy update",
+            "date":      "01 Apr 2026",
+            "body":      "Effective 1 May 2026, all employees are required to be "
+                        "in office a minimum of 3 days per week. Managers will "
+                        "confirm team schedules by 15 April.",
+            "tag":       "Policy",
+            "tag_color": "#FAECE7",
+            "tag_text":  "#712B13",
         },
     ]
 

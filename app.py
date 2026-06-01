@@ -7,6 +7,7 @@ import os
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+from datetime import datetime
 from utils.helpers import (
     load_employees, load_pulse, load_kudos, load_activities,
     filter_pulse_by_role, filter_kudos_by_role,
@@ -27,6 +28,13 @@ st.set_page_config(
 
 # Vibe warm palette + hide Streamlit default chrome
 apply_vibe_style()
+
+# ── Date references ───────────────────────────────────────────────────────────
+# TODAY ensures no future data is shown even if CSV extends beyond today
+# CURRENT_YEAR filters points and stats to the current calendar year
+TODAY         = pd.Timestamp.today().normalize()
+CURRENT_YEAR  = datetime.now().year
+CURRENT_MONTH = datetime.now().strftime("%b")
 
 # ── Login screen ──────────────────────────────────────────────────────────────
 def show_login():
@@ -68,6 +76,13 @@ def show_login():
                         margin-top:2px;
                         font-family:Montserrat,sans-serif;'>
                 By Mitma Consulting
+            </div>
+            <div style='display:inline-block; margin-top:8px;
+                    font-size:9px; font-weight:600;
+                    background:#f49052; color:#fff;
+                    padding:2px 8px; border-radius:4px;
+                    letter-spacing:.06em;'>
+                DEMO VERSION
             </div>
         </div>
         """, unsafe_allow_html=True)
@@ -174,10 +189,25 @@ else:
     df_kudos     = load_kudos()
     df_activities = load_activities()
 
-    # Filter data by role
-    df_pulse_role = filter_pulse_by_role(df_pulse, role, emp_id, mgr_name)
+    # ── Filter to today — no future data ─────────────────────────────────────
+    df_pulse_all  = df_pulse[df_pulse["week_date"] <= TODAY]
+    df_kudos_all  = df_kudos[df_kudos["date"] <= TODAY]
+
+    # ── Filter by role ────────────────────────────────────────────────────────
+    df_pulse_role = filter_pulse_by_role(
+        df_pulse_all, role, emp_id, mgr_name)
     df_kudos_role = filter_kudos_by_role(
-                        df_kudos, role, emp_id, mgr_name, df_employees)
+        df_kudos_all, role, emp_id, mgr_name, df_employees)
+    
+    # ── Week label helper ─────────────────────────────────────────────────────
+    def get_latest_week(df):
+        """Get latest week number and formatted label from a pulse DataFrame."""
+        if df.empty:
+            return 0, "No data"
+        latest_week  = df["week_number"].max()
+        latest_label = df[df["week_number"] == latest_week][
+            "week_date"].iloc[0].strftime("Week %W · %b %Y")
+        return latest_week, latest_label
 
     # ── Route to correct home by role ─────────────────────────────────────────
     if role == "Employee":
@@ -187,9 +217,14 @@ else:
         if my_pulse.empty:
             st.info("No pulse data found for your account.")
         else:
-            latest = my_pulse.sort_values("week_number").iloc[-1]
-            prev   = my_pulse.sort_values("week_number").iloc[-2] \
-                        if len(my_pulse) > 1 else latest
+            # Latest week scores
+            latest_week, latest_label = get_latest_week(my_pulse)
+            latest = my_pulse[
+                my_pulse["week_number"] == latest_week
+            ].iloc[-1]
+            prev   = my_pulse.sort_values(
+                "week_number").iloc[-2] \
+                if len(my_pulse) > 1 else latest
 
             score       = round(latest["composite_score"])
             score_delta = round(score - prev["composite_score"])
@@ -276,7 +311,11 @@ else:
 
             with col2:
                 st.markdown("##### Engagement trend — last 8 weeks")
-                trend_data = my_pulse.sort_values("week_number").tail(8)
+                cutoff     = TODAY - pd.Timedelta(weeks=8)
+                trend_data = my_pulse[
+                    (my_pulse["week_date"] >= cutoff) &
+                    (my_pulse["week_date"] <= TODAY)
+                ].sort_values("week_date")
                 fig = px.line(
                     trend_data,
                     x                      = "week_date",
@@ -329,9 +368,8 @@ else:
 
             with col4:
                 st.markdown("##### Upcoming activities")
-                today      = pd.Timestamp("2025-12-01")  # demo date
                 upcoming   = df_activities[
-                    df_activities["date"] >= today
+                    df_activities["date"] >= TODAY
                 ].sort_values("date").head(3)
 
                 if upcoming.empty:
@@ -354,34 +392,29 @@ else:
 
     elif role == "Manager":
 
-            # Get this manager's team pulse data — already filtered by filter_pulse_by_role()
-            team_pulse = df_pulse_role.copy()
+            # Filter team pulse to current year and up to today
+            team_pulse = df_pulse_role[
+                df_pulse_role["week_date"].dt.year == CURRENT_YEAR
+            ].copy()
 
             if team_pulse.empty:
                 st.info("No team data found.")
             else:
-                # Get the most recent week number in the dataset
-                latest_week = team_pulse["week_number"].max()
+                latest_week, latest_label = get_latest_week(team_pulse)
+                latest_team = team_pulse[
+                    team_pulse["week_number"] == latest_week]
 
-                # Filter to only the latest week's rows for this team
-                latest_team = team_pulse[team_pulse["week_number"] == latest_week]
-
-                # Calculate org-wide average for the same week — used for comparison
-                org_avg = round(df_pulse[
-                    df_pulse["week_number"] == latest_week
-                ]["composite_score"].mean(), 1)
-
-                # Team average composite score this week
-                team_score = round(latest_team["composite_score"].mean())
-
-                # Difference between team score and org average — positive is good
-                vs_org = round(team_score - org_avg, 1)
-
-                # Count how many team members are flagged At Risk this week
-                at_risk = (latest_team["engagement_label"] == "At Risk").sum()
-
-                # How many team members submitted a pulse this week
-                responded = len(latest_team)
+                # Org average for comparison — current year, latest week
+                org_pulse   = df_pulse_all[
+                    (df_pulse_all["week_date"].dt.year == CURRENT_YEAR) &
+                    (df_pulse_all["week_number"] == latest_week)
+                ]
+                org_avg     = round(org_pulse["composite_score"].mean(), 1)
+                team_score  = round(latest_team["composite_score"].mean())
+                vs_org      = round(team_score - org_avg, 1)
+                at_risk     = (
+                    latest_team["engagement_label"] == "At Risk").sum()
+                responded   = len(latest_team)
 
                 # ── Hero banner ───────────────────────────────────────────────────
                 # Dark charcoal background — matches manager UX mockup
@@ -395,7 +428,7 @@ else:
                         <div style='font-size:11px; color:#888780;
                                     text-transform:uppercase;
                                     letter-spacing:.07em;'>
-                            {dept} · Week {latest_week}
+                            {dept} · {latest_label}
                         </div>
                         <div style='font-size:26px; font-weight:500;
                                     color:#F1EFE8; margin:4px 0;'>{emp_name}</div>
@@ -570,40 +603,31 @@ else:
 
     elif role == "HR":
 
-        # Get the most recent week in the dataset
-        latest_week  = df_pulse["week_number"].max()
+        # Filter to current year and up to today
+        df_pulse_cy  = df_pulse_all[
+            df_pulse_all["week_date"].dt.year == CURRENT_YEAR]
 
-        # Filter all pulse data to the latest week only
-        latest_pulse = df_pulse[df_pulse["week_number"] == latest_week]
+        latest_week, latest_label = get_latest_week(df_pulse_cy)
+        latest_pulse = df_pulse_cy[
+            df_pulse_cy["week_number"] == latest_week]
 
-        # Org-wide engagement score — average of all composite scores this week
-        org_score    = round(latest_pulse["composite_score"].mean())
-
-        # Response rate — how many employees submitted a pulse this week
-        # Divided by total employees to get a percentage
+        org_score     = round(latest_pulse["composite_score"].mean())
         response_rate = round(
             len(latest_pulse) / len(df_employees) * 100, 1)
-
-        # Calculate at-risk percentage per department
-        # groupby("department") splits the data by dept
-        # apply() runs a function on each dept group
-        # The function calculates what % of that dept is At Risk
         at_risk_teams = latest_pulse.groupby("department").apply(
             lambda x: (x["engagement_label"] == "At Risk").mean()
         )
+        flagged_depts = at_risk_teams[
+            at_risk_teams > 0.3].index.tolist()
 
-        # Flag departments where more than 30% of employees are At Risk
-        flagged_depts = at_risk_teams[at_risk_teams > 0.3].index.tolist()
-
-        # ── Hero banner ───────────────────────────────────────────────────────
-        # Deep purple background — matches HR UX mockup
-        # Alert message changes based on how many depts are flagged
         alert_msg = (
             f"{len(flagged_depts)} department"
             f"{'s' if len(flagged_depts) != 1 else ''} need attention"
             if flagged_depts else "Org engagement is healthy this week"
         )
 
+        # ── Hero banner ───────────────────────────────────────────────────────
+        # Deep purple background — matches HR UX mockup
         st.markdown(f"""
         <div style='background:#3C3489; border-radius:12px;
                     padding:20px 24px; margin-bottom:20px;
@@ -613,7 +637,7 @@ else:
                 <div style='font-size:11px; color:#AFA9EC;
                             text-transform:uppercase;
                             letter-spacing:.07em;'>
-                    Org overview · Week {latest_week}
+                    Org overview · {latest_label}
                 </div>
                 <div style='font-size:26px; font-weight:500;
                             color:#fff; margin:4px 0;'>{alert_msg}</div>
@@ -734,21 +758,35 @@ else:
             # ── Points leaderboard snapshot ───────────────────────────────────
             st.markdown("##### Points leaderboard — top 5")
 
-            # Approximate points from pulse submissions only for now
-            # Full points engine wired in later modules
-            # Count how many pulse responses each employee submitted
-            pulse_counts = df_pulse.groupby(
-                ["employee_id","name"]
-            )["response_id"].count().reset_index()
-            pulse_counts.columns = ["employee_id","name","submissions"]
+             # Vectorised points — current year, up to today
+            pulse_cy = df_pulse_all[
+                df_pulse_all["week_date"].dt.year == CURRENT_YEAR]
+            kudos_cy = df_kudos_all[
+                df_kudos_all["date"].dt.year == CURRENT_YEAR]
 
-            # Each submission = 20 points
-            pulse_counts["points"] = pulse_counts["submissions"] * 20
+            pulse_pts = pulse_cy.groupby(
+                "employee_id").size().reset_index()
+            pulse_pts.columns = ["employee_id", "pts"]
+            pulse_pts["pts"] *= 20
 
-            # Get top 5 by points
-            top5 = pulse_counts.nlargest(5, "points")
+            given_pts = kudos_cy.groupby("giver_id").size().reset_index()
+            given_pts.columns = ["employee_id", "gpts"]
+            given_pts["gpts"] *= 10
 
-            for i, row in enumerate(top5.itertuples(), 1):
+            rcvd_pts  = kudos_cy.groupby(
+                "recipient_id").size().reset_index()
+            rcvd_pts.columns = ["employee_id", "rpts"]
+            rcvd_pts["rpts"] *= 15
+
+            lb = df_employees[["employee_id","name"]].copy()
+            lb = lb.merge(pulse_pts, on="employee_id", how="left")
+            lb = lb.merge(given_pts, on="employee_id", how="left")
+            lb = lb.merge(rcvd_pts,  on="employee_id", how="left")
+            lb = lb.fillna(0)
+            lb["total"] = (lb["pts"] + lb["gpts"] + lb["rpts"]).astype(int)
+            lb = lb.sort_values("total", ascending=False).head(5)
+
+            for i, row in enumerate(lb.itertuples(), 1):
                 st.markdown(f"""
                 <div style='display:flex; align-items:center;
                             justify-content:space-between;
@@ -759,7 +797,7 @@ else:
                     </span>
                     <span style='font-size:12px; font-weight:500;
                                  color:#f49052;'>
-                        {row.points:,} pts
+                        {row.total:,} pts
                     </span>
                 </div>
                 """, unsafe_allow_html=True)

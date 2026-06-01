@@ -44,7 +44,7 @@ COMPANY_NAME = "MM Group"
 # 5 years of weekly pulse data — Jan 2020 to Dec 2024.
 # Each week is represented by its Monday date.
 # 260 weeks × 5,000 employees = 1.3 million pulse rows.
-START_DATE = datetime(2025, 1, 6)    # first Monday of 2020
+START_DATE = datetime(2026, 1, 5)    # first Monday of 2020
 NUM_EMPLOYEES = 500    # Version 0: 500 · Version 1: 2000
 NUM_WEEKS     = 52     # Version 0: 52  · Version 1: 156
 

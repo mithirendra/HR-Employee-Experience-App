@@ -8,6 +8,7 @@ import streamlit as st
 import pandas as pd
 import plotly.express as px
 import plotly.graph_objects as go
+from datetime import datetime
 from utils.helpers import (
     load_employees, load_pulse,
     filter_pulse_by_role,
@@ -25,7 +26,7 @@ if not is_logged_in():
 
 # ── Page config ───────────────────────────────────────────────────────────────
 st.set_page_config(
-    page_title = "Wellbeing — VIBE",
+    page_title = "Wellbeing — VIBE Demo | Mitma Consulting",
     page_icon  = "assets/mitma_favicon.png",
     layout     = "wide",
 )
@@ -44,8 +45,13 @@ role_colors = {
 bg, fg = role_colors.get(role, ("#eee", "#333"))
 
 show_sidebar()
-    
-    # ── Load data ─────────────────────────────────────────────────────────────────
+
+# ── Date references ───────────────────────────────────────────────────────────
+TODAY        = pd.Timestamp.today().normalize()
+CURRENT_YEAR = datetime.now().year
+CURRENT_MONTH = datetime.now().strftime("%b")
+
+# ── Load data ─────────────────────────────────────────────────────────────────
 emp_id   = get_emp_id()
 mgr_name = get_manager_name()
 
@@ -54,6 +60,10 @@ df_pulse     = load_pulse()
 
 # Filter pulse data based on role
 df_pulse_role = filter_pulse_by_role(df_pulse, role, emp_id, mgr_name)
+
+# Filter to today — no future data
+df_pulse_role = df_pulse_role[df_pulse_role["week_date"] <= TODAY]
+df_pulse      = df_pulse[df_pulse["week_date"] <= TODAY]
 
 # ── Page header ───────────────────────────────────────────────────────────────
 st.markdown("## 💚 Wellbeing Index")
@@ -114,8 +124,10 @@ if role == "Employee":
     if my_pulse.empty:
         st.info("No wellbeing data found for your account.")
     else:
-        # Calculate personal burnout score
-        burnout_score, burnout_label = calculate_burnout(my_pulse)
+        # Calculate burnout from current year data only
+        my_pulse_current = my_pulse[
+            my_pulse["week_date"].dt.year == CURRENT_YEAR]
+        burnout_score, burnout_label = calculate_burnout(my_pulse_current)
 
         # Burnout colour — green/amber/red
         burnout_color = (
@@ -134,7 +146,8 @@ if role == "Employee":
                 <div style='font-size:11px; color:#9FE1CB;
                             text-transform:uppercase;
                             letter-spacing:.07em;'>
-                    Your wellbeing
+                    Your wellbeing ·
+                    Jan — {CURRENT_MONTH} {CURRENT_YEAR}
                 </div>
                 <div style='font-size:26px; font-weight:500;
                             color:#fff; margin:4px 0;'>{emp_name}</div>
@@ -156,13 +169,15 @@ if role == "Employee":
         k1, k2, k3, k4 = st.columns(4)
         with k1:
             # Average absent days per week
-            avg_absent = round(my_pulse["absent_days"].mean(), 1)
+            avg_absent = round(my_pulse_current["absent_days"].mean(), 1)
             st.metric("Avg absent days", avg_absent)
+            st.caption(f"Per week in {CURRENT_YEAR}")
             # st.caption("Average days absent per week")
         with k2:
             # Average overtime hours per week
-            avg_overtime = round(my_pulse["overtime_hours"].mean(), 1)
+            avg_overtime = round(my_pulse_current["overtime_hours"].mean(), 1)
             st.metric("Avg overtime hrs", avg_overtime)
+            st.caption(f"Per week in {CURRENT_YEAR}")
             # st.caption("Average overtime hours per week")
         with k3:
             # Lowest dimension score — most at-risk area
@@ -173,19 +188,36 @@ if role == "Employee":
             st.caption("Your weakest 5C area over all weeks")
         with k4:
             # Weeks flagged At Risk
-            at_risk_weeks = (my_pulse["engagement_label"] == "At Risk").sum()
-            st.metric("At-risk weeks", at_risk_weeks)
-            st.caption("Weeks your engagement score fell below 4")
+            at_risk_current = (
+                my_pulse_current["engagement_label"] == "At Risk").sum()
+            at_risk_all     = (
+                my_pulse["engagement_label"] == "At Risk").sum()
+            st.metric("At-risk weeks", at_risk_current)
+            st.caption(f"Weeks your engagement score fell below 45 in {CURRENT_YEAR}")
 
         st.markdown("---")
+
+        # Year selector — defaults to current year
+        available_years = sorted(
+            my_pulse["week_date"].dt.year.unique(), reverse=True)
+        col_yr, _ = st.columns([1, 3])
+        with col_yr:
+            selected_year = st.selectbox(
+                "Select year",
+                available_years,
+                index=0,
+                key="wellbeing_year"
+            )
+        my_pulse_selected = my_pulse[
+            my_pulse["week_date"].dt.year == selected_year]
 
         col1, col2 = st.columns(2)
 
         with col1:
             # ── Wellbeing trend — composite score over time ───────────────────
-            st.markdown("##### Wellbeing trend — all weeks")
+            st.markdown(f"##### Wellbeing trend — {selected_year}")
             fig = px.line(
-                my_pulse.sort_values("week_number"),
+                my_pulse_selected.sort_values("week_number"),
                 x                       = "week_date",
                 y                       = "composite_score",
                 markers                 = False,
@@ -214,7 +246,7 @@ if role == "Employee":
             # ── Absenteeism trend ─────────────────────────────────────────────
             st.markdown("##### Absenteeism — absent days per week")
             fig2 = px.bar(
-                my_pulse.sort_values("week_number"),
+                my_pulse_selected.sort_values("week_number"),
                 x                       = "week_date",
                 y                       = "absent_days",
                 color_discrete_sequence = ["#f49052"],
@@ -239,8 +271,11 @@ elif role == "Manager":
     if team_pulse.empty:
         st.info("No team wellbeing data found.")
     else:
-        # Calculate burnout score for the whole team
-        burnout_score, burnout_label = calculate_burnout(team_pulse)
+        # Current year only for burnout and metrics
+        team_pulse_current = team_pulse[
+            team_pulse["week_date"].dt.year == CURRENT_YEAR]
+
+        burnout_score, burnout_label = calculate_burnout(team_pulse_current)
         burnout_color = (
             "#4caf7d" if burnout_label == "Low" else
             "#f49052" if burnout_label == "Moderate" else
@@ -257,7 +292,8 @@ elif role == "Manager":
                 <div style='font-size:11px; color:#9FE1CB;
                             text-transform:uppercase;
                             letter-spacing:.07em;'>
-                    Team wellbeing · {dept}
+                    Team wellbeing · {dept} ·
+                Jan — {CURRENT_MONTH} {CURRENT_YEAR}
                 </div>
                 <div style='font-size:26px; font-weight:500;
                             color:#fff; margin:4px 0;'>{emp_name}</div>
@@ -278,11 +314,14 @@ elif role == "Manager":
         # ── KPI strip ─────────────────────────────────────────────────────────
         k1, k2, k3, k4 = st.columns(4)
         with k1:
-            avg_absent = round(team_pulse["absent_days"].mean(), 1)
-            st.metric("Avg absent days", avg_absent)
+            avg_absent = round(team_pulse_current["absent_days"].mean(), 1)
+            st.metric("Avg absent days",    avg_absent)
+            st.caption(f"Per week in {CURRENT_YEAR}")
         with k2:
-            avg_overtime = round(team_pulse["overtime_hours"].mean(), 1)
-            st.metric("Avg overtime hrs", avg_overtime)
+            avg_overtime = round(
+                team_pulse_current["overtime_hours"].mean(), 1)
+            st.metric("Avg overtime hrs",   avg_overtime)
+            st.caption(f"Per week in {CURRENT_YEAR}")
         with k3:
             # Count team members with high burnout
             member_burnout = team_pulse.groupby("employee_id").apply(
@@ -290,23 +329,25 @@ elif role == "Manager":
             )
             high_burnout = (member_burnout > 60).sum()
             st.metric("High burnout members", high_burnout)
+            st.caption("Burnout score above 60")
         with k4:
             at_risk_pct = round(
-                (team_pulse["engagement_label"] == "At Risk").mean() * 100)
+                (team_pulse_current["engagement_label"] == "At Risk"
+                 ).mean() * 100)
             st.metric("At-risk %", f"{at_risk_pct}%")
-            st.caption('Percentage of employees with engagement score below 45')
+            st.caption(f"In {CURRENT_YEAR}")
 
         st.markdown("---")
 
         # ── Member burnout heatmap ────────────────────────────────────────────
         st.markdown("##### Team member burnout risk")
 
-        # Calculate burnout per member
-        members      = team_pulse["name"].unique()
+        members      = team_pulse_current["name"].unique()
         member_stats = []
 
         for name in members:
-            member_data   = team_pulse[team_pulse["name"] == name]
+            member_data   = team_pulse_current[
+                team_pulse_current["name"] == name]
             score, label  = calculate_burnout(member_data)
             avg_absent    = round(member_data["absent_days"].mean(), 1)
             avg_overtime  = round(member_data["overtime_hours"].mean(), 1)
@@ -360,15 +401,20 @@ elif role == "Manager":
 elif role == "HR":
 
     # ── HR wellbeing view ─────────────────────────────────────────────────────
-    st.markdown("##### Org-wide burnout risk by department")
+    st.markdown(f"##### Org-wide burnout risk by department — {CURRENT_YEAR}")
+
+    # Current year only for burnout
+    df_pulse_current = df_pulse[
+        df_pulse["week_date"].dt.year == CURRENT_YEAR]
 
     # Calculate burnout per department
     dept_stats = []
-    for dept_name in df_pulse["department"].unique():
-        dept_data     = df_pulse[df_pulse["department"] == dept_name]
-        score, label  = calculate_burnout(dept_data)
-        avg_absent    = round(dept_data["absent_days"].mean(), 1)
-        avg_overtime  = round(dept_data["overtime_hours"].mean(), 1)
+    for dept_name in df_pulse_current["department"].unique():
+        dept_data    = df_pulse_current[
+            df_pulse_current["department"] == dept_name]
+        score, label = calculate_burnout(dept_data)
+        avg_absent   = round(dept_data["absent_days"].mean(), 1)
+        avg_overtime = round(dept_data["overtime_hours"].mean(), 1)
         dept_stats.append({
             "department":    dept_name,
             "burnout_score": score,
@@ -376,6 +422,7 @@ elif role == "HR":
             "avg_absent":    avg_absent,
             "avg_overtime":  avg_overtime,
         })
+
 
     # Sort by burnout score
     dept_stats = sorted(
@@ -389,16 +436,19 @@ elif role == "HR":
         st.metric("High burnout depts", high_burnout_depts)
         st.caption('Departments with burnout score above 60')
     with k2:
-        org_absent = round(df_pulse["absent_days"].mean(), 1)
+        org_absent = round(df_pulse_current["absent_days"].mean(), 1)
         st.metric("Org avg absent days", org_absent)
+        st.caption(f"Per week in {CURRENT_YEAR}")
     with k3:
-        org_overtime = round(df_pulse["overtime_hours"].mean(), 1)
+        org_overtime = round(df_pulse_current["overtime_hours"].mean(), 1)
         st.metric("Org avg overtime hrs", org_overtime)
+        st.caption(f"Per week in {CURRENT_YEAR}")
     with k4:
         at_risk_pct = round(
-            (df_pulse["engagement_label"] == "At Risk").mean() * 100)
+            (df_pulse_current["engagement_label"] == "At Risk"
+             ).mean() * 100)
         st.metric("Org at-risk %", f"{at_risk_pct}%")
-        st.caption('Percentage of employees with engagement score below 45')
+        st.caption(f"In {CURRENT_YEAR}")
 
 
     st.markdown("---")
@@ -480,13 +530,12 @@ elif role == "HR":
     ]
 
     # Filter feedback containing any of the keywords
-    mh_flags = df_pulse[
-        df_pulse["feedback"].notna() &
-        df_pulse["feedback"].str.lower().str.contains(
+    mh_flags = df_pulse_current[
+        df_pulse_current["feedback"].notna() &
+        df_pulse_current["feedback"].str.lower().str.contains(
             "|".join(MH_KEYWORDS), na=False)
     ][["department","feedback","week_date"]].sort_values(
-        "week_date", ascending=False
-    ).head(10)
+        "week_date", ascending=False).head(10)
 
     if mh_flags.empty:
         st.success("No mental health signals detected this period.")
