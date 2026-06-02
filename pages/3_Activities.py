@@ -133,20 +133,31 @@ if role == "Employee":
     </div>
     """, unsafe_allow_html=True)
 
-    # ── Points breakdown ──────────────────────────────────────────────────────
+    # Activities taken part — registered and checked in
+    registered_count = sum(
+        1 for key in st.session_state
+        if key.startswith(f"registered_{emp_id}_")
+        and st.session_state[key]
+    )
+    checkedin_count = sum(
+        1 for key in st.session_state
+        if key.startswith(f"checkedin_{emp_id}_")
+        and st.session_state[key]
+    )
+
     k1, k2, k3, k4 = st.columns(4)
     with k1:
-        st.metric("Pulse points",    f"{points['pulse']:,}")
-        st.caption(f"{points['pulse']//20} submissions × 20 pts")
+        st.metric("Activities registered", registered_count)
+        st.caption("This session")
     with k2:
-        st.metric("Kudos given",     f"{points['given']:,}")
-        st.caption(f"{points['given']//10} Kudos × 10 pts")
+        st.metric("Activities attended",   checkedin_count)
+        st.caption("Checked in this session")
     with k3:
-        st.metric("Kudos received",  f"{points['received']:,}")
-        st.caption(f"{points['received']//15} Kudos × 15 pts")
-    with k4:
-        st.metric("Activity pts",    f"{points['session']:,}")
+        st.metric("Activity points",       f"{points['session']:,}")
         st.caption("From registrations and check-ins")
+    with k4:
+        st.metric("Total points",          f"{points['total']:,}")
+        st.caption(f"Jan — {CURRENT_MONTH} {CURRENT_YEAR}")
 
     st.markdown("---")
 
@@ -521,6 +532,7 @@ elif role == "HR":
     with col1:
         # ── Activities by type ────────────────────────────────────────────────
         st.markdown("##### Activities by type")
+        st.caption(f"All {len(df_activities)} activities — org-wide and dept-specific combined")
         type_counts = df_activities["type"].value_counts().reset_index()
         type_counts.columns = ["type", "count"]
         fig = px.bar(
@@ -548,6 +560,7 @@ elif role == "HR":
     with col2:
         # ── Activities by format ──────────────────────────────────────────────
         st.markdown("##### In-person vs virtual")
+        st.caption(f"All {len(df_activities)} activities — org-wide and dept-specific combined")
         format_counts = df_activities["format"].value_counts()
         fig2 = px.pie(
             values = format_counts.values,
